@@ -22,3 +22,11 @@
 .App-link {
   color: #09d3ac;
 }
+
+.trueChallenge {
+  background-color: white;
+}
+
+.falseChallenge {
+  background-color: yellow;
+}

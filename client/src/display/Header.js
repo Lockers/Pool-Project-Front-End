@@ -1,13 +1,23 @@
-import React from 'react';
-import { Spastic } from '../components/Test';
+import React, {useState} from 'react';
+import { Players } from '../components/Players/Players';
 import { Route, Link } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
+import { FullPlayerInfo } from '../components/Players/FullPlayerInfo';
+import { LeagueTable } from '../components/leaguetable/LeagueTable';
+import { MatchCreation } from '../components/matches/MatchCreation';
 
 
-export const TestComponent = () => {
+export const Display = () => {
+    const [player, setPlayer] = useState(1)
     const { SubMenu } = Menu;
     const { Header, Content, Sider } = Layout;
 
+    const handleClick = (PosId) => {
+        setPlayer(PosId)
+        console.log(player)
+        return PosId;
+    }
+    
 return (
     <Layout>
         <Header className="header">
@@ -40,10 +50,24 @@ return (
               </span>
                         }
                     >
-                        <Menu.Item key="1">League Table</Menu.Item>
-                        <Menu.Item key="2">Upcoming Matches</Menu.Item>
-                        <Menu.Item key="3">Previous Results</Menu.Item>
-                        <Menu.Item key="4">Challenge</Menu.Item>
+                        <Menu.Item key="4">
+                            <Link to='/league-table'>League Table</Link>
+                        </Menu.Item>
+                        <Menu.Item key="5">
+                            <Link to='/players'>Players</Link>
+                        </Menu.Item>
+                        <Menu.Item key="6">
+                            <Link to='/upcoming-matches'>Upcoming Matches</Link>
+                        </Menu.Item>
+                        <Menu.Item key="7">
+                            <Link to='/previous-results'>Previous Results</Link>
+                        </Menu.Item>
+                        <Menu.Item key="8">
+                            <Link to='/matches'>Match Admin</Link>
+                        </Menu.Item>
+                        <Menu.Item key="9">
+                            <Link to='/reuslts'>Results Admin</Link>
+                        </Menu.Item>
                     </SubMenu>
                     
                 </Menu>
@@ -57,7 +81,11 @@ return (
                         minHeight: 280,
                     }}
                 >
-                    <Route path="/" component={Spastic} />
+                    <Route exact path="/players" render={(props) => <Players {...props} handleClick={handleClick} />} />
+                    <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={player} />} />
+                    <Route exact path="/league-table" render={(props) => <LeagueTable {...props} handleClick={handleClick} />} />
+                    <Route exact path="/matches" render={(props) => <MatchCreation {...props} />} />
+                    
         </Content>
             </Layout>
         </Layout>
