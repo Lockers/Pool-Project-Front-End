@@ -4,6 +4,7 @@ import { useGetRequest } from '../../helpers/GetRequest';
 
 export const FullPlayerInfo = (props) => {
     const player = useGetRequest(`players/${props.player}`)
+    console.log(props)
     if (player === undefined) {
         return (
             <Spin />
