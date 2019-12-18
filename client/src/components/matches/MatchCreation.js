@@ -1,8 +1,8 @@
 import React from 'react';
-import { DropDown } from '..//../display/DropDown';
+import { AddChallenge } from '../../display/AddChallenge';
 
 export const MatchCreation = () => {
     return (
-        <DropDown />
+        <AddChallenge />
     )
 }
