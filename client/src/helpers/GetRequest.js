@@ -6,7 +6,7 @@ export function useGetRequest(endpoint) {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:4000/api/${endpoint}`)
+            .get(`https://telfordpoolserverapi.herokuapp.com/api/${endpoint}`)
             .then(response => {
                 setData(response)
             })
