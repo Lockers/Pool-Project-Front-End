@@ -7,6 +7,7 @@ import { LeagueTable } from '../components/leaguetable/LeagueTable';
 import { MatchCreation } from '../components/matches/MatchCreation';
 
 
+
 export const Display = () => {
     const [player, setPlayer] = useState(1)
     const { SubMenu } = Menu;
