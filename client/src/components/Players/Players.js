@@ -5,7 +5,7 @@ import { Spin } from 'antd';
 
 export const Players = (props) => {
     const players = useGetRequest('players')
-    if (players === undefined) {
+    if (!players) {
         return <Spin />
     }
     return (
