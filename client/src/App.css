@@ -24,11 +24,11 @@
 }
 
 .trueChallenge {
-  background-color: white;
+  background-color: lightgreen;
 }
 
 .falseChallenge {
-  background-color: yellow;
+  background-color: orange;
 }
 form {
   margin-top: 5rem;

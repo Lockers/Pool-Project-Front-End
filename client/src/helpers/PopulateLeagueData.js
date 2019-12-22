@@ -4,37 +4,38 @@ import { Spin } from 'antd';
 
 export function usePopulateLeagueData() {
     
-    const data = useGetRequest('players')
+    const data = useGetRequest('players/league-table')
     if (data === undefined) {
         return <Spin />
     }
     else {
+        console.log(data)
         const dataSource = data.data;
 
         const columns = [
             {
                 title: 'Name',
-                dataIndex: 'Name',
+                dataIndex: 'name',
                 key: 'name'
             },
             {
                 title: 'Played',
-                dataIndex: 'Played',
+                dataIndex: 'played',
                 key: 'played'
             },
             {
                 title: 'Won',
-                dataIndex: 'Won',
+                dataIndex: 'won',
                 key: 'won'
             },
             {
                 title: 'Lost',
-                dataIndex: 'Lost',
+                dataIndex: 'lost',
                 key: 'lost'
             },
             {
                 title: 'Total Prize Money',
-                dataIndex: 'TotalPrizeMoney',
+                dataIndex: 'totalPrizeMoney',
                 key: 'totalPrizeMoney'
             },
         ]

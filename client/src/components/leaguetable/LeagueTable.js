@@ -8,11 +8,12 @@ export const LeagueTable = (props) => {
     return (
 
         <div>
+            {console.log(data)}
             <Table
-                rowClassName={(record, index) => record.Challengable ? 'trueChallenge' : 'falseChallenge'}
-                rowKey={dataSource => dataSource.PosID}
+                rowClassName={(record, index) => record.challengable ? 'trueChallenge' : 'falseChallenge'}
+                rowKey={dataSource => dataSource.leaguePosition}
                 dataSource={data[0]} columns={data[1]}
-                onRow={(record, rowIndex) => { props.handleClick(record.PosID) }}
+                onRow={(record, rowIndex) => { props.handleClick(record.leaguePosition ) }}
             />
         </div>
 
