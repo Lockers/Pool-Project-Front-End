@@ -5,6 +5,7 @@ import Axios from 'axios';
 
 export function useEventHelper() {
 
+    const url = 'https://telford-pool-back-end.herokuapp.com/'
     const [challenge, setChallenge] = useState({ challenger: null, challenged: null, venue: 'WWFC', ruleset: 'World Rules', pot: null })
     const [challenger, setChallenger] = useState({})
     const [challenged, setChallenged] = useState(['blah', 'balh'])
@@ -19,7 +20,7 @@ export function useEventHelper() {
 
     useEffect(() => {
         if (challenge.challenger !== null)
-            Axios.get(`http://localhost:5000/players/${challenge.challenger}`)
+            Axios.get(`${url}${challenge.challenger}`)
                 .then(response => {
                     setChallenge({ ...challenge, challenger: response.data[0].name })
                     setName1(response.data[0].name)
@@ -28,7 +29,7 @@ export function useEventHelper() {
                 })
     }, [buildChallenge])
     useEffect(() => {
-        Axios.put(`http://localhost:5000/players/${player1Id}`, updatePlayer1)
+        Axios.put(`${url}${player1Id}`, updatePlayer1)
             .then(response => {
                 console.log(response)
             })
@@ -39,7 +40,7 @@ export function useEventHelper() {
 
     useEffect(() => {
         if (challenge.challenger !== null)
-            Axios.get(`http://localhost:5000/players/${challenge.challenged}`)
+            Axios.get(`${url}${challenge.challenged}`)
                 .then(response => {
                     setChallenge({ ...challenge, challenged: response.data[0].name })
                     setName2(response.data[0].name)
@@ -48,7 +49,7 @@ export function useEventHelper() {
                 })
     }, [name1])
     useEffect(() => {
-        Axios.put(`http://localhost:5000/players/${player2Id}`, updatePlayer2)
+        Axios.put(`${url}${player2Id}`, updatePlayer2)
             .then(response => {
                 console.log(response)
             })
@@ -59,7 +60,7 @@ export function useEventHelper() {
 
     useEffect(() => {
         if (challenge.challenger !== null)
-            Axios.post(`http://localhost:5000/challenges`, challenge)
+            Axios.post(`${url}/challenges`, challenge)
                 .then(response => {
                     setUpdatePlayer1(false)
                 })
