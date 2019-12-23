@@ -5,6 +5,7 @@ import { Layout, Menu, Icon } from 'antd';
 import { FullPlayerInfo } from '../components/Players/FullPlayerInfo';
 import { LeagueTable } from '../components/leaguetable/LeagueTable';
 import { MatchCreation } from '../components/matches/MatchCreation';
+import { UpcomingChallenges } from '../components/challenges.js/UpComingChallenges';
 
 export const Display = () => {
     const [player, setPlayer] = useState(1)
@@ -56,7 +57,7 @@ return (
                             <Link to='/players'>Players</Link>
                         </Menu.Item>
                         <Menu.Item key="6">
-                            <Link to='/upcoming-matches'>Upcoming Matches</Link>
+                            <Link to='/upcomingchallenges'>Upcoming Matches</Link>
                         </Menu.Item>
                         <Menu.Item key="7">
                             <Link to='/previous-results'>Previous Results</Link>
@@ -84,6 +85,7 @@ return (
                     <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={player} />} />
                     <Route exact path="/league-table" render={(props) => <LeagueTable {...props} handleClick={handleClick} />} />
                     <Route exact path="/matches" render={(props) => <MatchCreation {...props} />} />
+                    <Route exact path="/upcomingchallenges" render={(props) => <UpcomingChallenges {...props} />} />
                     
         </Content>
             </Layout>

@@ -4,12 +4,11 @@ import { Spin } from 'antd';
 
 export function usePopulateLeagueData() {
     
-    const data = useGetRequest('players/league-table')
+    const data = useGetRequest('players')
     if (data === undefined) {
         return <Spin />
     }
     else {
-        console.log(data)
         const dataSource = data.data;
 
         const columns = [

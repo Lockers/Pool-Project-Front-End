@@ -8,7 +8,6 @@ export const LeagueTable = (props) => {
     return (
 
         <div>
-            {console.log(data)}
             <Table
                 rowClassName={(record, index) => record.challengable ? 'trueChallenge' : 'falseChallenge'}
                 rowKey={dataSource => dataSource.leaguePosition}
