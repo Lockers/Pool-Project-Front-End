@@ -6,18 +6,31 @@ import { FullPlayerInfo } from '../components/Players/FullPlayerInfo';
 import { LeagueTable } from '../components/leaguetable/LeagueTable';
 import { MatchCreation } from '../components/matches/MatchCreation';
 import { UpcomingChallenges } from '../components/challenges.js/UpComingChallenges';
+import { AddResults } from '../components/results/AddResults';
+import { ViewResults } from '../components/results/ViewResults';
+import { useGetRequest } from '../helpers/GetRequest';
+import { Spin } from 'antd';
 
 export const Display = () => {
-    const [player, setPlayer] = useState(1)
     const { SubMenu } = Menu;
     const { Header, Content, Sider } = Layout;
-
-    const handleClick = (PosId) => {
-        setPlayer(PosId)
-        console.log(player)
-        return PosId;
-    }
     
+    // Get request to get all players and save to state, ready to be passed to each component that needs players
+    const players = useGetRequest('players')
+
+    //State to set individual player to pass down as a prop
+    const [individualPlayer, setIndividualPlayer] = useState()
+
+
+    // Click handler takes in ID then filters player data to find individual player based on card click
+    const handleClick = (e) => {
+        const singlePlayer = players.data.filter(player => player._id === e)
+        setIndividualPlayer(singlePlayer)
+    }
+
+    if (!players) {
+        return <Spin />
+    }
 return (
     <Layout>
         <Header className="header">
@@ -60,13 +73,13 @@ return (
                             <Link to='/upcomingchallenges'>Upcoming Matches</Link>
                         </Menu.Item>
                         <Menu.Item key="7">
-                            <Link to='/previous-results'>Previous Results</Link>
+                            <Link to='/results'>Previous Results</Link>
                         </Menu.Item>
                         <Menu.Item key="8">
                             <Link to='/matches'>Match Admin</Link>
                         </Menu.Item>
                         <Menu.Item key="9">
-                            <Link to='/reuslts'>Results Admin</Link>
+                            <Link to='/addResult'>Results Admin</Link>
                         </Menu.Item>
                     </SubMenu>
                     
@@ -81,11 +94,15 @@ return (
                         minHeight: 280,
                     }}
                 >
-                    <Route exact path="/players" render={(props) => <Players {...props} handleClick={handleClick} />} />
-                    <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={player} />} />
-                    <Route exact path="/league-table" render={(props) => <LeagueTable {...props} handleClick={handleClick} />} />
-                    <Route exact path="/matches" render={(props) => <MatchCreation {...props} />} />
-                    <Route exact path="/upcomingchallenges" render={(props) => <UpcomingChallenges {...props} />} />
+                    {/* 
+        
+                    <Route exact path="/addResult" render={(props) => <AddResults {...props} challengeId={challengeId} />} />
+                    <Route exact path="/Results" component={ViewResults} /> */}
+                    <Route exact path="/league-table" render={(props) => <LeagueTable {...props} players={players} />} />
+                    <Route exact path="/players" render={(props) => <Players {...props} players={players} handleClick={handleClick} />} />
+                    <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />
+                    <Route exact path="/matches" render={(props) => <MatchCreation {...props} players={players} />} />
+                    <Route exact path="/upcomingchallenges" component={UpcomingChallenges} />
                     
         </Content>
             </Layout>

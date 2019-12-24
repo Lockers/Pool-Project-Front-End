@@ -4,11 +4,11 @@ import { Card } from 'antd';
 
 export const PlayerCard = (props) => {
     return (
-        <Card title={props.player.Name}  style={{ width: 300 }}>
+        <Card title={props.player.name}  style={{ width: 300 }}>
             <p>{props.player.name}</p>
             <p>Card content</p>
             <p>Card content</p>
-            <Link to={`/players/${props.player.PosID}`}><button onClick={(e) => props.handleClick(props.player.PosID)}>More</button></Link>
+            <Link to={`/players/${props.player._id}`}><button onClick={(e) => props.handleClick(props.player._id)}>More</button></Link>
         </Card>
     )
 };

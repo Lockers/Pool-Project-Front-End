@@ -1,8 +1,10 @@
 import React from 'react';
-import { AddChallenge } from '../../display/AddChallenge';
+import { Form } from './Form';
+// import { Spin } from 'antd';
 
-export const MatchCreation = () => {
+export const MatchCreation = (props) => {
+    
     return (
-        <AddChallenge />
+        <Form players={props.players} />
     )
 }
