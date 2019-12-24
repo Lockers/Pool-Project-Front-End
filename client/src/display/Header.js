@@ -6,8 +6,8 @@ import { FullPlayerInfo } from '../components/Players/FullPlayerInfo';
 import { LeagueTable } from '../components/leaguetable/LeagueTable';
 import { MatchCreation } from '../components/matches/MatchCreation';
 import { UpcomingChallenges } from '../components/challenges.js/UpComingChallenges';
-import { AddResults } from '../components/results/AddResults';
-import { ViewResults } from '../components/results/ViewResults';
+// import { AddResults } from '../components/results/AddResults';
+// import { ViewResults } from '../components/results/ViewResults';
 import { useGetRequest } from '../helpers/GetRequest';
 import { Spin } from 'antd';
 

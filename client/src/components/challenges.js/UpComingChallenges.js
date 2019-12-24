@@ -11,8 +11,8 @@ export const UpcomingChallenges = (props) => {
     return (
         <div>
             <h1>Upcoming Challenges</h1>
-            {challenges.data.map(challenge => {
-                return <Challenge challenge={challenge} addResultHandleClick={props.addResultHandleClick} />
+            {challenges.data.map((challenge, index) => {
+                return <Challenge key={index} challenge={challenge} addResultHandleClick={props.addResultHandleClick} />
             })}
     </div>
     )

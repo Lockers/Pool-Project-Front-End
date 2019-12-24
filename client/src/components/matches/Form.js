@@ -3,30 +3,74 @@ import { venue, ruleset } from '../data/GeneralData';
 import React from 'react';
 import { Spin } from 'antd';
 import Axios from 'axios';
-import { Redirect } from 'react-router-dom';
+
 
 export const Form = (props) => {
 
     //Set initial state for match creation using some default values
     const [challenge, setChallenge] = useState({ challenger: 'lol', challenged: '', venue: '', ruleset: '', pot: null, date: Date(2019, 0, 1) })
-    const [postChallenge, setPostChallenge] = useState([])
+    const [challenger1, setChallenger1] = useState(null)
+    const [challenger2, setChallenger2] = useState(null)
+
+
+    const [postChallenge, setPostChallenge] = useState(['blah'])
+    const [postBuilt, setPostBuilt] = useState(false)
+    const [challengeAdded, setChallengeAdded] = useState(false)
+    const [playerUpdated, setPlayerUpdated] = useState(false)
 
     //Filter players for players only available to challenge and within 4 places of challenger
     const [challengedPlayer, setChallengedPlayer] = useState([])
-    
+
     useEffect(() => {
-        
-        Axios
-            .post('http://localhost:5000/challenges', postChallenge)
-            .then(response => {
-                if (response.status === 200) {
-                    return (alert(response.data));
-                }
-            })
-            .catch(err => {
-            console.log(err)
-        })
+        if (postBuilt) {
+            Axios
+                .post('https://telford-pool-back-end.herokuapp.com/challenges', postChallenge)
+                .then(response => {
+                    if (response.status === 200) {
+                        setChallengeAdded(true)
+                        setPostBuilt(false)
+                        return (alert(response.data));
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
     }, [postChallenge])
+
+    useEffect(() => {
+        if (challengeAdded === true) {
+            Axios
+                .put(`http://localhost:5000/players/${challenger1}`, { challengable: false })
+                .then(response => {
+                    if (response.status === 200) {
+                        setPlayerUpdated(true)
+                        setChallengeAdded(false)
+                        return (alert(response.data));
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }, [challengeAdded])
+
+    useEffect(() => {
+        if (playerUpdated === true) {
+            console.log('Am I firing', challenger2)
+            Axios
+                .put(`http://localhost:5000/players/${challenger2}`, { challengable: false })
+                .then(response => {
+                    if (response.status === 200) {
+                        setPlayerUpdated(false)
+                        return (alert(response.data));
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }, [playerUpdated])
 
     if (!props.players) {
         return <Spin />
@@ -34,15 +78,17 @@ export const Form = (props) => {
 
     //Filter for challengeable players once props.players is defined
     const challengablePlayers = props.players.data.filter(player => player.challengable === true)
-    
+
     const submitHandler = (e) => {
+        e.preventDefault();
         setPostChallenge(challenge);
-        return < Redirect to="http://localhost:5000/upcomingchallenges" />
+        setPostBuilt(true);
     }
 
     //Handler sets the challenger on state and filters for only challengable players within 4 spaces
     const challengerChangeHandler = (e) => {
         e.preventDefault()
+        setChallenger1(e.target.value)
         setChallenge({ ...challenge, challenger: e.target[e.target.selectedIndex].text })
         const challenger = challengablePlayers.filter(player => player.leaguePosition === e.target.value - 1 || player.leaguePosition === e.target.value - 2 || player.leaguePosition === e.target.value - 3 || player.leaguePosition === e.target.value - 4)
         setChallengedPlayer(challenger);
@@ -51,7 +97,8 @@ export const Form = (props) => {
     //Handler sets Challenged player on state
     const challengedChangeHandler = (e) => {
         e.preventDefault()
-        setChallenge({ ...challenge, challenged: e.target.value })
+        setChallenger2(e.target.value)
+        setChallenge({ ...challenge, challenged: e.target[e.target.selectedIndex].text })
     }
 
     //Handler set venue on State
@@ -82,7 +129,7 @@ export const Form = (props) => {
             <select onChange={challengedChangeHandler} className="challenged">
 
                 {challengedPlayer.map((item, index) => {
-                    return <option key={index} name='challenged'>{item.name}</option>
+                    return <option key={index} value={item.leaguePosition} name='challenged'>{item.name}</option>
                 })}
             </select>
             <select onChange={venueChangeHandler} className="venue">
