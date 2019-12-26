@@ -41,7 +41,7 @@ export const Form = (props) => {
     useEffect(() => {
         if (challengeAdded === true) {
             Axios
-                .put(`http://localhost:5000/players/${challenger1}`, { challengable: false })
+                .put(`https://telford-pool-back-end.herokuapp.com/${challenger1}`, { challengable: false })
                 .then(response => {
                     if (response.status === 200) {
                         setPlayerUpdated(true)
@@ -59,7 +59,7 @@ export const Form = (props) => {
         if (playerUpdated === true) {
             console.log('Am I firing', challenger2)
             Axios
-                .put(`http://localhost:5000/players/${challenger2}`, { challengable: false })
+                .put(`https://telford-pool-back-end.herokuapp.com/${challenger2}`, { challengable: false })
                 .then(response => {
                     if (response.status === 200) {
                         setPlayerUpdated(false)
@@ -96,6 +96,7 @@ export const Form = (props) => {
 
     //Handler sets Challenged player on state
     const challengedChangeHandler = (e) => {
+        console.log(challenge)
         e.preventDefault()
         setChallenger2(e.target.value)
         setChallenge({ ...challenge, challenged: e.target[e.target.selectedIndex].text })

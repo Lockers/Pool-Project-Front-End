@@ -6,6 +6,7 @@ import { FullPlayerInfo } from '../components/Players/FullPlayerInfo';
 import { LeagueTable } from '../components/leaguetable/LeagueTable';
 import { MatchCreation } from '../components/matches/MatchCreation';
 import { UpcomingChallenges } from '../components/challenges.js/UpComingChallenges';
+import { AddPlayer } from '../components/Players/AddPlayer';
 // import { AddResults } from '../components/results/AddResults';
 // import { ViewResults } from '../components/results/ViewResults';
 import { useGetRequest } from '../helpers/GetRequest';
@@ -103,6 +104,9 @@ return (
                     <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />
                     <Route exact path="/matches" render={(props) => <MatchCreation {...props} players={players} />} />
                     <Route exact path="/upcomingchallenges" component={UpcomingChallenges} />
+                    <Route exact path="/addplayer" component={AddPlayer} />
+
+                    
                     
         </Content>
             </Layout>

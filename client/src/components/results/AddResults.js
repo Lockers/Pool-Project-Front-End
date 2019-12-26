@@ -15,7 +15,7 @@ export const AddResults = (props) => {
         if (!result) {
             return <Spin />
         }
-        Axios.post('http://localhost:5000/results', submitResult)
+        Axios.post('https://telford-pool-back-end.herokuapp.com/results', submitResult)
             .then(response => {
                 setResultId(result.data._id)
             })
@@ -28,7 +28,7 @@ export const AddResults = (props) => {
         if (!result) {
             return <Spin />
         }
-        Axios.delete(`http://localhost:5000/challenges/${resultId}`)
+        Axios.delete(`https://telford-pool-back-end.herokuapp.com/challenges/${resultId}`)
             .then(response => {
                 console.log(response)
                 
