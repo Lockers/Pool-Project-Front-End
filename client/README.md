@@ -66,3 +66,35 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+   const [playerToRemove, setPlayerToRemove] = useState('')
+    const [addToArchive, setAddToArchive] = useState()
+
+    const removePlayer = (id) => {
+        setPlayerToRemove(id)
+    }
+
+    useEffect(() => {
+        if (playerToRemove)
+            Axios
+                .delete(`https://telford-pool-back-end.herokuapp.com/${playerToRemove}`)
+                .then(response => {
+                    setAddToArchive(response)
+                })
+                .catch(error => {
+                    console.log('Sad Path', error)
+                })
+    }, [playerToRemove])
+
+    useEffect(() => {
+        if (addToArchive)
+            Axios
+                .post(`https://telford-pool-back-end.herokuapp.com/players/archive/`, addToArchive.data)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log('Sad Path', error)
+                })
+    }, [addToArchive])

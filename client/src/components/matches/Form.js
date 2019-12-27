@@ -8,7 +8,7 @@ import Axios from 'axios';
 export const Form = (props) => {
 
     //Set initial state for match creation using some default values
-    const [challenge, setChallenge] = useState({ challenger: 'lol', challenged: '', venue: '', ruleset: '', pot: null, date: Date(2019, 0, 1) })
+    const [challenge, setChallenge] = useState({ challenger: 'lol', challenged: '', venue: '', ruleset: '', pot: null, date: '' })
     const [challenger1, setChallenger1] = useState(null)
     const [challenger2, setChallenger2] = useState(null)
 
@@ -41,7 +41,7 @@ export const Form = (props) => {
     useEffect(() => {
         if (challengeAdded === true) {
             Axios
-                .put(`https://telford-pool-back-end.herokuapp.com/${challenger1}`, { challengable: false })
+                .put(`https://telford-pool-back-end.herokuapp.com/players/${challenger1}`, { challengable: false })
                 .then(response => {
                     if (response.status === 200) {
                         setPlayerUpdated(true)
@@ -59,7 +59,7 @@ export const Form = (props) => {
         if (playerUpdated === true) {
             console.log('Am I firing', challenger2)
             Axios
-                .put(`https://telford-pool-back-end.herokuapp.com/${challenger2}`, { challengable: false })
+                .put(`https://telford-pool-back-end.herokuapp.com/players/${challenger2}`, { challengable: false })
                 .then(response => {
                     if (response.status === 200) {
                         setPlayerUpdated(false)
@@ -96,8 +96,8 @@ export const Form = (props) => {
 
     //Handler sets Challenged player on state
     const challengedChangeHandler = (e) => {
-        console.log(challenge)
         e.preventDefault()
+        console.log('challenged Fioring')
         setChallenger2(e.target.value)
         setChallenge({ ...challenge, challenged: e.target[e.target.selectedIndex].text })
     }
@@ -119,31 +119,35 @@ export const Form = (props) => {
         e.preventDefault()
         setChallenge({ ...challenge, pot: e.target.value })
     }
+    const dataChangeHandler = (e) => {
+        setChallenge({ ...challenge, date: e.target.value })
+    }
 
     return (
         <form onSubmit={submitHandler}>
             <select onChange={(e) => challengerChangeHandler(e)} className="challenger">
                 {challengablePlayers.map((item, index) => {
-                    return <option key={index} value={item.leaguePosition} name='challenger'>{item.name}</option>
+                    return <option key={index} defaultValue='' value={item.leaguePosition} name='challenger'>{item.name}</option>
                 })}
             </select>
-            <select onChange={challengedChangeHandler} className="challenged">
+            <select onChange={e => challengedChangeHandler(e)} className="challenged">
 
                 {challengedPlayer.map((item, index) => {
                     return <option key={index} value={item.leaguePosition} name='challenged'>{item.name}</option>
                 })}
             </select>
-            <select onChange={venueChangeHandler} className="venue">
+            <select onChange={e => venueChangeHandler(e)} className="venue">
                 {venue.map((item, index) => {
                     return <option key={index} name='venue'>{item}</option>
                 })}
             </select>
-            <select onChange={rulesetChangeHandler} className="ruleset">
+            <select onChange={e => rulesetChangeHandler(e)} className="ruleset">
                 {ruleset.map((item, index) => {
                     return <option key={index} name='ruleset'>{item}</option>
                 })}
             </select>
-            <input onChange={potChangeHandler} placeholder={20} type='number' name='pot' />
+            <input onChange={e => potChangeHandler(e)} placeholder={20} type='number' name='pot' />
+            <input onChange={e => dataChangeHandler(e)} type='date' name='date' />
             <button>Submit</button>
         </form>
     )
