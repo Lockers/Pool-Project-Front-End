@@ -16,6 +16,11 @@ export const ruleset = [
 
 export const columns = [
     {
+        title: 'League Position',
+        dataIndex: 'leaguePosition',
+        key: 'leaguePosition'
+    },
+    {
         title: 'Name',
         dataIndex: 'name',
         key: 'name'
