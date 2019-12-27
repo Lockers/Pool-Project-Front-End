@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table, Pagination } from 'antd';
 
 //Import Column Data to set up table
 import { columns } from '../data/GeneralData';
@@ -14,8 +14,11 @@ export const LeagueTable = (props) => {
             <Table
                 rowClassName={(record, index) => record.challengable ? 'trueChallenge' : 'falseChallenge'}
                 rowKey={dataSource => dataSource._id}
-                dataSource={props.players.data} columns={columns}
+                dataSource={props.players.data} columns={columns} pagination={{pageSize: 50}}
+            
+            
             />
+            
         </div>
 
     )
