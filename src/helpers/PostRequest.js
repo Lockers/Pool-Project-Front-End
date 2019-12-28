@@ -7,7 +7,8 @@ export const usePostRequest = (endpoint, data) => {
             Axios
                 .post(`https://telford-pool-back-end.herokuapp.com/${endpoint}`, data)
                 .then(response => {
-                    return console.log('happy Path');
+                    console.log('happy Path');
+                    window.location.reload();
                 })
                 .catch(error => {
                     return console.log('Sad Path', error);
