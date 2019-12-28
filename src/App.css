@@ -26,22 +26,27 @@
 }
 
 .trueChallenge {
+  font-size: smaller;
+  text-align: center;
   background-color: lightgreen;
 }
 
 .falseChallenge {
   background-color: orange;
+  font-size: smaller;
+  text-align: center;
 }
+
 form {
   margin-top: 5rem;
 }
 
-.matches{
+.matches {
   border: 1px solid red;
   margin: 0.5rem;
 }
 
-.playerCardContainer{
+.playerCardContainer {
   display: flex;
   flex-wrap: wrap;
   width: 100%;

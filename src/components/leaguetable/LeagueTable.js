@@ -1,11 +1,11 @@
 import React from 'react';
 import { Table } from 'antd';
+import { Link } from 'react-router-dom';
 
 //Import Column Data to set up table
 import { columns } from '../data/GeneralData';
 
 export const LeagueTable = (props) => {
-    //Add player data from props
     
     return (
         //Set up table and populate with data from columns and using props.players as data source
@@ -15,7 +15,6 @@ export const LeagueTable = (props) => {
                 rowClassName={(record, index) => record.challengable ? 'trueChallenge' : 'falseChallenge'}
                 rowKey={dataSource => dataSource._id}
                 dataSource={props.players.data} columns={columns} pagination={{pageSize: 50}}
-            
             
             />
             

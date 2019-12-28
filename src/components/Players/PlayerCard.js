@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Pagination } from 'antd';
+import { Card } from 'antd';
 import { useDeleteRequest } from '../../helpers/DeleteRequest';
 import '../../App.css';
 

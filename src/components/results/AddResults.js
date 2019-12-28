@@ -1,105 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import { useGetRequest } from '../../helpers/GetRequest';
-import { Spin } from 'antd';
-import Axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Menu, Dropdown } from 'antd';
 
 export const AddResults = (props) => {
-    const result = useGetRequest(`challenges/${props.challengeId}`)
-    const [addChallengedScore, setAddChallengedScore] = useState({})
-    const [addChallengerScore, setAddChallengerScore] = useState({})
-    const [submitResult, setSubmitResult] = useState(result)
-    const [resultId, setResultId] = useState()
+    const [challengerId, setChallengerId] = useState()
+    const [challengedId, setChallengedId] = useState()
+
+
+    function handleChallengerClick(e) {
+        setChallengerId(e.item.props.children);
+    }
+    function handleChallengedClick(e) {
+        setChallengedId(e.item.props.children);
+    }
+
     
-    useEffect(() => {
-        if (!result) {
-            return <Spin />
-        }
-        Axios.post('https://telford-pool-back-end.herokuapp.com/results', submitResult)
-            .then(response => {
-                setResultId(result.data._id)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [submitResult])
-
-    useEffect(() => {
-        if (!result) {
-            return <Spin />
-        }
-        Axios.delete(`https://telford-pool-back-end.herokuapp.com/challenges/${resultId}`)
-            .then(response => {
-                console.log(response)
-                
-            })
-            .catch(error => {
-                console.log(error)
-                
-            })
-
-    }, [resultId])
-
-    const submitHandler = () => {
-        if (!result) {
-            return <Spin />
-        }
-
-        const newobj = { ...result.data, ...addChallengedScore, ...addChallengerScore }
-        setSubmitResult(newobj)
-
+    function handleButtonClick(e) {
+        console.log(e.target.value)
     }
 
-    const challengedClickHandler = (e) => {
-        setAddChallengedScore({ ...addChallengedScore, challengedScore: e.target.value })
-    }
-    const challengerClickHandler = (e) => {
-        setAddChallengerScore({ ...addChallengerScore, challengerScore: e.target.value })
-    }
+    const menu1 = (
+        <div>
+            <Menu onClick={handleChallengerClick}>
+                {props.players.data.map(player =>
+                    <Menu.Item key={player._id}>{player.name}</Menu.Item>
+                )}
+            </Menu>
+            
+        </div>
+    );
+    const menu2 = (
+        <div>
+            <Menu onClick={handleChallengedClick}>
+                {props.players.data.map(player =>
+                    <Menu.Item key={player._id}>{player.name}</Menu.Item>
+                )}
+            </Menu>
 
-    if (!result) {
-        return <Spin />
-    }
+        </div>
+    );
 
     return (
-        <form onSubmit={submitHandler}>
-            <input
-                type='text'
-                readOnly={true}
-                value={result.data.challenger}
-            />
-            <input
-                type='number'
-                onChange={challengerClickHandler}
-                placeholder='0'
-            />
-            v
-         <input
-                type='number'
-                onChange={challengedClickHandler}
-                placeholder='0'
-            />
-            <input
-                type='text'
-                readOnly={true}
-                value={result.data.challenged}
-            />
-            <input
-                type='text'
-                readOnly={true}
-                value={result.data.venue}
-            />
-            <input
-                type='text'
-                readOnly={true}
-                value={result.data.ruleset}
-            />
-            <input
-                type='text'
-                readOnly={true}
-                value={result.data.pot}
-            />
-            <button>Submit</button>
-        </form>
+        <div>
+            <div id="components-dropdown-demo-dropdown-button">
+                <Dropdown.Button onClick={handleButtonClick} overlay={menu1}>
+                    Challenger: {challengerId}
+                </Dropdown.Button>
+                <Dropdown.Button overlay={menu2}>
+                    Challenged: {challengedId}
+            </Dropdown.Button>
+            </div>
+            <form>
+                <input
+                    type='text'
+                    name='challenger'
+                    value={challengerId}
+                />
+                <input
+                    type='number'
+                    name='challengerFrames'
+                />
+                <input
+                    type='text'
+                    name='challenged'
+                    value={challengedId}
+                />
+                <input
+                    type='number'
+                    name='challengedFrames'
+                />
+            </form>
+        </div>
     )
+
+
+
 }
