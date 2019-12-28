@@ -18,18 +18,22 @@ export const useResultHelper = (players) => {
         pot: null,
         date: ''
     })
+    const [sendRequest, setSendRequest] = useState(false)
+
+
     useEffect(() => {
-        if(newResult.date !== '')
+        if(sendRequest === true)
         Axios
             .post(`https://telford-pool-back-end.herokuapp.com/results`, newResult)
             .then(response => {
                 console.log('Happy Path', response)
+                alert('Result Added')
                 window.location.reload()
             })
             .catch(err => {
                     console.log('sad Path')
             })
-    }, [newResult])
+    }, [sendRequest, newResult])
     
     function dateChangeHandler(e) {
         e.preventDefault()
@@ -37,6 +41,7 @@ export const useResultHelper = (players) => {
     }
     function newResultSubmitHandler(e) {
         e.preventDefault()
+        setSendRequest(true)
         console.log(newResult)
     }
     function handleChallengerClick(e) {
