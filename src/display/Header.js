@@ -99,6 +99,8 @@ return (
         
                     <Route exact path="/addResult" render={(props) => <AddResults {...props} challengeId={challengeId} />} />
                     <Route exact path="/Results" component={ViewResults} /> */}
+
+                    
                     <Route exact path="/league-table" render={(props) => <LeagueTable {...props} players={players} />} />
                     <Route exact path="/players" render={(props) => <Players {...props} players={players} handleClick={handleClick} />} />
                     <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />

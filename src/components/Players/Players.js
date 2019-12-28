@@ -5,11 +5,14 @@ import { Link } from 'react-router-dom';
 export const Players = (props) => {
     
     return (
-        <div>
+        <div className='PlayerCardContainer'>
+            
             <Link to='/addplayer'><button>Add Player</button></Link>
             {props.players.data.map(card => {
                 return <PlayerCard key={card._id} player={card} handleClick={props.handleClick} />
             })}
+            
+            
         </div>
     )
 }

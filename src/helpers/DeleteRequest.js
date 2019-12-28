@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import Axios from 'axios';
 
-export const usePostRequest = (endpoint, data) => {
+export const useDeleteRequest = (endpoint) => {
     useEffect(() => {
-        if (data.leaguePosition)
+        if(endpoint)
             Axios
-                .delete(`https://telford-pool-back-end.herokuapp.com/${endpoint}`)
+                .delete(`https://telford-pool-back-end.herokuapp.com/players/${endpoint}`)
                 .then(response => {
                     console.log('happy Path');
-                    location.reload()
+                    window.location.reload();
                 })
                 .catch(error => {
                     return console.log('Sad Path', error);
                 })
-    }, [endpoint, data])
+    }, [endpoint])
 }

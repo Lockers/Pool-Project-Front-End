@@ -40,3 +40,14 @@ form {
   border: 1px solid red;
   margin: 0.5rem;
 }
+
+.playerCardContainer{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.ant-card-body {
+  background-color: dodgerblue;
+}
