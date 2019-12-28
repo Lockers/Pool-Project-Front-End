@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { venue, ruleset } from '../data/GeneralData';
+import { venues, rulesets } from '../data/GeneralData';
 import React from 'react';
 import { Spin } from 'antd';
 import Axios from 'axios';
@@ -137,12 +137,12 @@ export const Form = (props) => {
                 })}
             </select>
             <select onChange={e => venueChangeHandler(e)} className="venue">
-                {venue.map((item, index) => {
+                {venues.map((item, index) => {
                     return <option key={index} name='venue'>{item}</option>
                 })}
             </select>
             <select onChange={e => rulesetChangeHandler(e)} className="ruleset">
-                {ruleset.map((item, index) => {
+                {rulesets.map((item, index) => {
                     return <option key={index} name='ruleset'>{item}</option>
                 })}
             </select>

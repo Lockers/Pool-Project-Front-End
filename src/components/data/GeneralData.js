@@ -1,4 +1,4 @@
-export const venue = [
+export const venues = [
     "WWFC",
     "Barley Mow",
     "Dawley Social",
@@ -6,7 +6,7 @@ export const venue = [
     "Shithole in Mkt Drayton"
 ]
 
-export const ruleset = [
+export const rulesets = [
     "World Rules",
     "BlackBall",
     "Old Rules",

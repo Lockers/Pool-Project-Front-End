@@ -56,3 +56,15 @@ form {
 .ant-card-body {
   background-color: dodgerblue;
 }
+input{
+  margin: 0.25rem;
+  text-align: center;
+}
+
+.textInput {
+  width: 20%;
+}
+
+.numberInput {
+  width: 5%;
+}

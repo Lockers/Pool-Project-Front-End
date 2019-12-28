@@ -1,73 +1,77 @@
-import React, { useState } from 'react';
-import { Menu, Dropdown } from 'antd';
+import React, {useState} from 'react';
+import { Dropdown } from 'antd';
+import { useResultHelper } from '../../helpers/AddResultHelper';
 
 export const AddResults = (props) => {
-    const [challengerId, setChallengerId] = useState()
-    const [challengedId, setChallengedId] = useState()
-
-
-    function handleChallengerClick(e) {
-        setChallengerId(e.item.props.children);
-    }
-    function handleChallengedClick(e) {
-        setChallengedId(e.item.props.children);
-    }
-
-    
-    function handleButtonClick(e) {
-        console.log(e.target.value)
-    }
-
-    const menu1 = (
-        <div>
-            <Menu onClick={handleChallengerClick}>
-                {props.players.data.map(player =>
-                    <Menu.Item key={player._id}>{player.name}</Menu.Item>
-                )}
-            </Menu>
-            
-        </div>
-    );
-    const menu2 = (
-        <div>
-            <Menu onClick={handleChallengedClick}>
-                {props.players.data.map(player =>
-                    <Menu.Item key={player._id}>{player.name}</Menu.Item>
-                )}
-            </Menu>
-
-        </div>
-    );
-
+    const dunno = useResultHelper(props.players)
     return (
         <div>
             <div id="components-dropdown-demo-dropdown-button">
-                <Dropdown.Button onClick={handleButtonClick} overlay={menu1}>
-                    Challenger: {challengerId}
+                <Dropdown.Button onClick={dunno.handleButtonClick} overlay={dunno.challengerMenu}>
+                    Challenger: {dunno.challengerId}
                 </Dropdown.Button>
-                <Dropdown.Button overlay={menu2}>
-                    Challenged: {challengedId}
-            </Dropdown.Button>
+                <Dropdown.Button overlay={dunno.challengedMenu}>
+                    Challenged: {dunno.challengedId}
+                </Dropdown.Button>
+                <Dropdown.Button overlay={dunno.venueMenu}>
+                    Venue: {dunno.venue}
+                </Dropdown.Button>
+                <Dropdown.Button overlay={dunno.rulesetMenu}>
+                    RuleSet: {dunno.ruleset}
+                </Dropdown.Button>
+
             </div>
-            <form>
+            <form onSubmit={dunno.newResultSubmitHandler}>
                 <input
+                    className='textInput'
                     type='text'
                     name='challenger'
-                    value={challengerId}
+                    value={dunno.challengerId}
                 />
                 <input
+                    className='numberInput'
                     type='number'
                     name='challengerFrames'
+                    onChange={e => dunno.challengerScoreChangeHandler(e)}
                 />
-                <input
-                    type='text'
-                    name='challenged'
-                    value={challengedId}
-                />
-                <input
+                :
+                 <input
+                    className='numberInput'
                     type='number'
                     name='challengedFrames'
+                    onChange={e => dunno.challengedScoreChangeHandler(e)}
                 />
+                <input
+                    className='textInput'
+                    type='text'
+                    name='challenged'
+                    value={dunno.challengedId}
+                />
+                <input
+                    className='textInput'
+                    type='text'
+                    name='venue'
+                    value={dunno.venue}
+                />
+                <input
+                    className='textInput'
+                    type='text'
+                    name='ruleset'
+                    value={dunno.ruleset}
+                />
+                <input
+                    className='numberInput'
+                    type='number'
+                    name='pot'
+                    onChange={e => dunno.potChangeHandler(e)}
+                />
+                <input
+                    className='textInput'
+                    type='date'
+                    name='date'
+                    onChange={e => dunno.dateChangeHandler(e)}
+                />
+                <button>Submit</button>
             </form>
         </div>
     )
