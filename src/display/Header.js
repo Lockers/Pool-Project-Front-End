@@ -8,7 +8,7 @@ import { MatchCreation } from '../components/matches/MatchCreation';
 import { UpcomingChallenges } from '../components/challenges.js/UpComingChallenges';
 import { AddPlayer } from '../components/Players/AddPlayer';
 import { AddResults } from '../components/results/AddResults';
-// import { ViewResults } from '../components/results/ViewResults';
+import { PreviousResults } from '../components/results/PreviousResults';
 import { useGetRequest } from '../helpers/GetRequest';
 import { Spin } from 'antd';
 
@@ -98,7 +98,7 @@ return (
                     {/* 
         
                     
-                    <Route exact path="/Results" component={ViewResults} /> */}
+                    <Route exact path="/Results" component={PreviousResults} /> */}
 
 
                     <Route exact path="/league-table" render={(props) => <LeagueTable {...props} players={players} />} />
@@ -108,6 +108,7 @@ return (
                     <Route exact path="/upcomingchallenges" component={UpcomingChallenges} />
                     <Route exact path="/addplayer" component={AddPlayer} />
                     <Route exact path="/addResult" render={(props) => <AddResults {...props} players={players} />} />
+                    <Route exact path="/Results" component={PreviousResults} />
 
                     
                     

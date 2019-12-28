@@ -15,6 +15,18 @@ export const FullPlayerInfo = (props) => {
             <p>Played: {props.player[0].played}</p>
             <p>Won: {props.player[0].won}</p>
             <p>Total Prize Money Won: {props.player[0].totalPrizeMoney}</p>
+            Results
+            {props.player[0].results.map(result => {
+                return (
+                    <div>
+                    <p>{result.challenger}</p>
+                    <p>{result.challengerScore}</p>
+                    <p>{result.challengedScore}</p>
+                    <p>{result.challenged}</p>
+                    <p>{result.venue}</p>
+                        </div>
+                )
+            })}
         </div>
     )
 }

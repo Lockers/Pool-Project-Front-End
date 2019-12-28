@@ -68,3 +68,6 @@ input{
 .numberInput {
   width: 5%;
 }
+span {
+  margin: 0.3rem;
+}

@@ -24,7 +24,7 @@ export const useResultHelper = (players) => {
     useEffect(() => {
         if(sendRequest === true)
         Axios
-            .post(`https://telford-pool-back-end.herokuapp.com/results`, newResult)
+            .post(`https://telford-pool-back-end.herokuapp.com`, newResult)
             .then(response => {
                 console.log('Happy Path', response)
                 alert('Result Added')
