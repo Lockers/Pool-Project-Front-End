@@ -14,9 +14,11 @@ export const PreviousResults = () => {
             <h1>Previous results</h1>
             {results.data.map((result, index) => {
                 return(
-                    <div>
+                    <div key={index}>
                         <span>
-                            <span>{result.challenger}</span> v 
+                            <span>{result.challenger}</span>
+                            <span>{result.challengerScore}</span> :
+                            <span>{result.challengedScore}</span>
                             <span>{result.challenged}</span>
                             <span>Venue: {result.venue}</span>
                             <span>Date: {result.date}</span>

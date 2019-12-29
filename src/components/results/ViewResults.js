@@ -10,6 +10,7 @@ export const ViewResults = () => {
     console.log(results)
     return (
         <div>{results.data.map(result => {
+            console.log(result)
             return <div><span>{result.challenger}  {result.challengerScore} v {result.challengedScore}  {result.challenged} {result.venue} {result.pot} {result.date} </span></div>
         })}</div>
     )

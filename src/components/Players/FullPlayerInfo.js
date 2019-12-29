@@ -16,9 +16,9 @@ export const FullPlayerInfo = (props) => {
             <p>Won: {props.player[0].won}</p>
             <p>Total Prize Money Won: {props.player[0].totalPrizeMoney}</p>
             Results
-            {props.player[0].results.map(result => {
+            {props.player[0].results.map((result, index) => {
                 return (
-                    <div>
+                    <div key={index}>
                     <p>{result.challenger}</p>
                     <p>{result.challengerScore}</p>
                     <p>{result.challengedScore}</p>

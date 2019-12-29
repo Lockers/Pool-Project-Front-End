@@ -3,8 +3,8 @@ import { Menu } from 'antd';
 import { rulesets, venues } from '.././components/data/GeneralData';
 import Axios from 'axios';
 
-// const url = 'http://localhost:5000/results/previous';
-const url = 'https://telford-pool-back-end.herokuapp.com/results/previous';
+const url = 'http://localhost:5000/results/';
+// const url = 'https://telford-pool-back-end.herokuapp.com/results/previous';
 
 export const useResultHelper = (players) => {
     const [challengerId, setChallengerId] = useState()
@@ -41,6 +41,7 @@ export const useResultHelper = (players) => {
     function dateChangeHandler(e) {
         e.preventDefault()
         setNewResult({ ...newResult, date: e.target.value })
+        console.log(newResult)
     }
     function newResultSubmitHandler(e) {
         e.preventDefault()
