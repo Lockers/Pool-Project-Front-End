@@ -3,6 +3,9 @@ import { Menu } from 'antd';
 import { rulesets, venues } from '.././components/data/GeneralData';
 import Axios from 'axios';
 
+// const url = 'http://localhost:5000/results/previous';
+const url = 'https://telford-pool-back-end.herokuapp.com/results/previous';
+
 export const useResultHelper = (players) => {
     const [challengerId, setChallengerId] = useState()
     const [challengedId, setChallengedId] = useState()
@@ -24,7 +27,7 @@ export const useResultHelper = (players) => {
     useEffect(() => {
         if(sendRequest === true)
         Axios
-            .post(`https://telford-pool-back-end.herokuapp.com`, newResult)
+            .post(`${url}`, newResult)
             .then(response => {
                 console.log('Happy Path', response)
                 alert('Result Added')

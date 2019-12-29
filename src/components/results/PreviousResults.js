@@ -4,8 +4,7 @@ import { Spin } from 'antd';
 
 export const PreviousResults = () => {
     const results = useGetRequest('results')
-    console.log(results)
-
+    
     if (!results) {
         return <Spin />
     }
