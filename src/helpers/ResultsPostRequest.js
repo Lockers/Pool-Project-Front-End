@@ -6,7 +6,7 @@ const url = 'https://telford-pool-back-end.herokuapp.com/results';
 
 export const useResultsPostRequest = (endpoint, data) => {
     useEffect(() => {
-        if(data.newResult)
+        if (data.newResult)
         Axios
             .post(`${url}${endpoint}`, data)
             .then(response => {

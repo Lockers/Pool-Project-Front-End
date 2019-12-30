@@ -25,7 +25,7 @@ export const useResultHelper = (players) => {
 
 
     useEffect(() => {
-        if(sendRequest === true)
+        if (sendRequest === true)
         Axios
             .post(`${url}`, newResult)
             .then(response => {
