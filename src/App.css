@@ -56,9 +56,10 @@ form {
 .ant-card-body {
   background-color: dodgerblue;
 }
-input{
+input {
   margin: 0.25rem;
   text-align: center;
+  
 }
 
 .textInput {
@@ -66,7 +67,7 @@ input{
 }
 
 .numberInput {
-  width: 5%;
+  width: 10%;
 }
 span {
   margin: 0.3rem;

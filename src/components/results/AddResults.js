@@ -22,18 +22,20 @@ export const AddResults = (props) => {
 
             </div>
             <form onSubmit={dunno.newResultSubmitHandler}>
+               
                 <input
                     className='textInput'
                     type='text'
                     name='challenger'
                     value={dunno.challengerId}
-                />
+                    />
                 <input
                     className='numberInput'
                     type='number'
                     name='challengerFrames'
                     onChange={e => dunno.challengerScoreChangeHandler(e)}
-                />
+                    />
+                
                 :
                  <input
                     className='numberInput'
