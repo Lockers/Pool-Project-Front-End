@@ -5,7 +5,7 @@ import { Table } from 'antd';
 import { columns } from '../data/GeneralData';
 
 export const LeagueTable = (props) => {
-    
+    // const newPlayerData = {...props.player.data}
     return (
         //Set up table and populate with data from columns and using props.players as data source
         <div>
