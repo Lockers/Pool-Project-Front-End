@@ -4,7 +4,7 @@ import { rulesets, venues } from '.././components/data/GeneralData';
 import Axios from 'axios';
 
 // const url = 'http://localhost:5000/results/';
-const url = 'https://telford-pool-back-end.herokuapp.com/results/previous';
+const url = 'https://telford-pool-back-end.herokuapp.com/results/';
 
 export const useResultHelper = (players) => {
     const [challengerId, setChallengerId] = useState()
