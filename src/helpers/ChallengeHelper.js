@@ -21,7 +21,7 @@ export const useChallengeCreator = (players) => {
     })
     const [send, setSend] = useState(false)
 
-    usePostRequest('challenges', newChallenge, send)
+    usePostRequest('challenges/', newChallenge, send)
 
     const challengable = players.data.filter(player => player.challengable === true)
 

@@ -8,10 +8,11 @@ import '../../App.css';
 export const PlayerCard = (props) => {
     const [deleteId, setDeleteId] = useState()
     const [fire, setFire] = useState(false)
-    usePostRequest('players/b', deleteId, fire)
+    usePostRequest(`players/archive/${deleteId}`, '',fire)
 
     const handleDelete = e => {
-        setDeleteId({...deleteId, id: e})
+        console.log(e)
+        setDeleteId(e)
         setFire(true)
     }
 
