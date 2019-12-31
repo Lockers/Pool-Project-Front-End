@@ -11,6 +11,7 @@ export const usePostRequest = (endpoint, data, fire) => {
                 .post(`${url}${endpoint}`, data)
                 .then(response => {
                     console.log('happy Path');
+                    alert('Added')
                     window.location.reload()
                     
                 })
