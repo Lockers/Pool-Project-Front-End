@@ -1,7 +1,8 @@
 import React from 'react';
 import { useGetRequest } from '../../helpers/GetRequest';
-import { Spin } from 'antd';
+import { Descriptions, Spin } from 'antd';
 import Moment from 'react-moment';
+
 
 export const ViewResults = () => {
     const results = useGetRequest('results')
@@ -16,18 +17,13 @@ export const ViewResults = () => {
             {results.data.map((result, index) => {
                 return (
                     <div key={index}>
-                        <span>
-                            <span>{result.challenger}</span>
-                            <span>{result.challengerScore}</span> :
-                            <span>{result.challengedScore}</span>
-                            <span>{result.challenged}</span>
-                            <span>Venue: {result.venue}</span>
-                            <span>Ruleset: {result.ruleset}</span>
-                            <span>Pot : £{result.pot}</span>
-                            <span>Date: <Moment format="DD/MM/YYYY">{result.date}</Moment></span>
-                            
-                        </span>
-
+                        <Descriptions bordered={true} size='small' layout='vertical' column='xs'>
+                            <Descriptions.Item label="Venue">{result.venue}</Descriptions.Item>
+                            <Descriptions.Item label="Date"><Moment format="DD/MM/YYYY">{result.date}</Moment></Descriptions.Item>
+                            <Descriptions.Item label="Ruleset">{result.ruleset}</Descriptions.Item>
+                            <Descriptions.Item label="Pot">£{result.pot}</Descriptions.Item>
+                            <Descriptions.Item label="Result">{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged}</Descriptions.Item>
+                        </Descriptions>,
                     </div>
                 )
             })}
