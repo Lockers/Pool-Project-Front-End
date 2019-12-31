@@ -1,10 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState } from 'react';
 import { Menu } from 'antd';
 import { rulesets, venues } from '.././components/data/GeneralData';
-import Axios from 'axios';
-
-// const url = 'http://localhost:5000/results/';
-const url = 'https://telford-pool-back-end.herokuapp.com/results/';
+import { usePostRequest } from './PostRequest';
 
 export const useResultHelper = (players) => {
     const [challengerId, setChallengerId] = useState()
@@ -23,21 +20,7 @@ export const useResultHelper = (players) => {
     })
     const [sendRequest, setSendRequest] = useState(false)
 
-
-    useEffect(() => {
-        if (sendRequest === true)
-        Axios
-            .post(`${url}`, newResult)
-            .then(response => {
-                console.log('Happy Path', response)
-                alert('Result Added')
-                window.location.reload()
-            })
-            .catch(err => {
-                    console.log('sad Path')
-            })
-    }, [sendRequest, newResult])
-    
+    usePostRequest('results', newResult, sendRequest)    
     function dateChangeHandler(e) {
         e.preventDefault()
         setNewResult({ ...newResult, date: e.target.value })
