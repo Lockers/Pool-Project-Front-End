@@ -9,7 +9,7 @@ export const LeagueTable = (props) => {
     return (
         //Set up table and populate with data from columns and using props.players as data source
         <div>
-            Version 0.65
+            Version 0.9 Beta
             <Table
                 rowClassName={(record, index) => record.challengable ? 'trueChallenge' : 'falseChallenge'}
                 rowKey={dataSource => dataSource._id}

@@ -11,6 +11,7 @@ import { ViewResults } from '../components/results/ViewResults';
 import { useGetRequest } from '../helpers/GetRequest';
 import { Spin } from 'antd';
 import { ViewChallenges } from '../components/challenges/ViewChallenges';
+import { SubmitChallenge } from '../components/challenges/SubmitChallenge';
 
 export const Display = () => {
 
@@ -19,11 +20,16 @@ export const Display = () => {
 
     //State to set individual player to pass down as a prop
     const [individualPlayer, setIndividualPlayer] = useState()
+    const [individualChallenge, setIndividualChallenge] = useState()
 
     // Click handler takes in ID then filters player data to find individual player based on card click
     const handleClick = (e) => {
         const singlePlayer = players.data.filter(player => player._id === e)
         setIndividualPlayer(singlePlayer)
+    }
+
+    const resultHandler = (e) => {
+        setIndividualChallenge(e)
     }
 
     if (!players) {
@@ -39,7 +45,8 @@ export const Display = () => {
             <Route exact path="/addplayer" component={AddPlayer} />
             <Route exact path="/addResult" render={(props) => <AddResults {...props} players={players} />} />
             <Route exact path="/viewresults" component={ViewResults} />
-            <Route exact path="/challenges" component={ViewChallenges} />
+            <Route exact path="/challenges" render={(props) => <ViewChallenges {...props} resultHandler={resultHandler} />} />
+            <Route exact path="/submitchallenge" render={(props) => <SubmitChallenge {...props} individualChallenge={individualChallenge} />} />
         </div>
 
     )

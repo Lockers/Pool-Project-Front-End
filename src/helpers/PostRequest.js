@@ -11,7 +11,7 @@ export const usePostRequest = (endpoint, data, fire) => {
                 .post(`${url}${endpoint}`, data)
                 .then(response => {
                     console.log('happy Path');
-                    window.location.reload();
+                    
                 })
                 .catch(error => {
                     return console.log('Sad Path', error);
