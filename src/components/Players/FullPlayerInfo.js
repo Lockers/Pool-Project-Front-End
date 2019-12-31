@@ -19,11 +19,12 @@ export const FullPlayerInfo = (props) => {
             {props.player[0].results.map((result, index) => {
                 return (
                     <div key={index}>
-                    <p>{result.challenger}</p>
-                    <p>{result.challengerScore}</p>
-                    <p>{result.challengedScore}</p>
-                    <p>{result.challenged}</p>
-                    <p>{result.venue}</p>
+                        <span>{result.challenger}</span>
+                    <span>{result.challengerScore}</span>
+                    <span>{result.challengedScore}</span>
+                    <span>{result.challenged}</span>
+                        <span>{result.venue}</span>
+                        <span>{result.date}</span>
                         </div>
                 )
             })}

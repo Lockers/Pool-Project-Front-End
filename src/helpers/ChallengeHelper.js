@@ -70,7 +70,7 @@ export const useChallengeCreator = (players) => {
 
     function dateChangeHandler(e) {
         e.preventDefault()
-        setNewChallenge({ ...newChallenge, date: e.target.value })
+        setNewChallenge({ ...newChallenge, date: Date(e.target.value) })
     }
     function submitHandler(e) {
         e.preventDefault()

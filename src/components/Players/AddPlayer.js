@@ -3,12 +3,14 @@ import { usePostRequest } from '../../helpers/PostRequest';
 
 export const AddPlayer = () => {
     const [newPlayer, setNewPlayer] = useState([]);
+    const [sendRequest, setSendRequest] = useState(false)
     let toAdd = { name: '', dateOfBirth: '', leaguePosition: null, played: 0, won: 0, lost: 0, totalPrizeMoney: 0, results: [], challengable: true }
-    usePostRequest('players', newPlayer)
+    usePostRequest('players', newPlayer, sendRequest)
     
     const submitNewPlayer = (e) => {
         e.preventDefault()
         setNewPlayer(toAdd)
+        setSendRequest(true)
     }
 
     const nameChangeHandler = (e) => {

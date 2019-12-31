@@ -4,7 +4,6 @@ import './NavBar.css';
 
 export const NavBar = () => {
     const myFunction = () => {
-     console.log('I am Clicked')
  }
     return (
         <div className="topnav">
