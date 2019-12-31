@@ -9,7 +9,8 @@ export const venues = [
     "Elephant and Castle",
     "The Rock, 4a",
     "Trench Labour",
-    "Miners Arms"
+    "Miners Arms",
+    "Bayley"
 ]
 
 export const rulesets = [
