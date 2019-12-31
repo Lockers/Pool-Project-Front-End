@@ -3,7 +3,13 @@ export const venues = [
     "Barley Mow",
     "Dawley Social",
     "Horseshoes",
-    "Shithole in Mkt Drayton"
+    "MD Legion",
+    "Bell and Bails",
+    "Mallard",
+    "Elephant and Castle",
+    "Fallows Gaff",
+    "Trench Labour",
+    "Miners Arms"
 ]
 
 export const rulesets = [

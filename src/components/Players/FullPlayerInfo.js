@@ -1,5 +1,6 @@
 import React from 'react';
 import { Spin } from 'antd';
+import Moment from 'react-moment';
 
 export const FullPlayerInfo = (props) => {
     
@@ -24,7 +25,7 @@ export const FullPlayerInfo = (props) => {
                     <span>{result.challengedScore}</span>
                     <span>{result.challenged}</span>
                         <span>{result.venue}</span>
-                        <span>{result.date}</span>
+                        <span><Moment format="DD/MM/YYYY">{result.date}</Moment></span>
                         </div>
                 )
             })}

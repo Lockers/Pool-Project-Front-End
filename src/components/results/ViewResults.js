@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGetRequest } from '../../helpers/GetRequest';
 import { Spin } from 'antd';
+import Moment from 'react-moment';
 
 export const ViewResults = () => {
     const results = useGetRequest('results')
@@ -21,8 +22,10 @@ export const ViewResults = () => {
                             <span>{result.challengedScore}</span>
                             <span>{result.challenged}</span>
                             <span>Venue: {result.venue}</span>
-                            <span>Date: {result.date}</span>
+                            <span>Ruleset: {result.ruleset}</span>
                             <span>Pot : £{result.pot}</span>
+                            <span>Date: <Moment format="DD/MM/YYYY">{result.date}</Moment></span>
+                            
                         </span>
 
                     </div>

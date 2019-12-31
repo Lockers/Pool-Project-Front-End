@@ -1,7 +1,8 @@
 import React from 'react';
 import { useGetRequest } from '../../helpers/GetRequest';
 import { Spin } from 'antd';
-import Styled from 'styled-components'
+import Styled from 'styled-components';
+import Moment from 'react-moment';
 
 const Span = Styled.span`
     margin: 1rem;
@@ -24,7 +25,7 @@ export const ViewChallenges = () => {
                         <span>{challenge.venue}</span>
                         <span>{challenge.ruleset}</span>
                         <span>{challenge.pot}</span>
-                        <span>{challenge.date}</span>
+                        <span><Moment format="DD/MM/YYYY">{challenge.date}</Moment></span>
                     </Span>
                     </div>
             })}
