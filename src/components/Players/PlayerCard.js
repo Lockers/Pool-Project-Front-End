@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from 'antd';
-import { useDeleteRequest } from '../../helpers/DeleteRequest';
+import { usePostRequest } from '../../helpers/PostRequest';
 import '../../App.css';
+
 
 export const PlayerCard = (props) => {
     const [deleteId, setDeleteId] = useState()
-    useDeleteRequest(deleteId)
+    usePostRequest('players/archive', deleteId)
 
     const handleDelete = e => {
         setDeleteId(e)
