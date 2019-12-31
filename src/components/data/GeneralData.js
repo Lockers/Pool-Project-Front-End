@@ -7,7 +7,7 @@ export const venues = [
     "Bell and Bails",
     "Mallard",
     "Elephant and Castle",
-    "Fallows Gaff",
+    "The Rock, 4a",
     "Trench Labour",
     "Miners Arms"
 ]
