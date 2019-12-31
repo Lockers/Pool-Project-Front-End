@@ -4,8 +4,6 @@ import { Card } from 'antd';
 import { useDeleteRequest } from '../../helpers/DeleteRequest';
 import '../../App.css';
 
-
-
 export const PlayerCard = (props) => {
     const [deleteId, setDeleteId] = useState()
     useDeleteRequest(deleteId)
