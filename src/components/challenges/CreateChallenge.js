@@ -1,6 +1,6 @@
 import React from 'react';
 import { useChallengeCreator } from '../../helpers/ChallengeHelper';
-import { Form } from './Form';
+import { ChallengeForm } from './ChallengeForm';
 
 export const CreateChallenge = (props) => {
 
@@ -8,7 +8,7 @@ export const CreateChallenge = (props) => {
 
     return (
         <div>
-            <Form challenge={challenge}/>
+            <ChallengeForm challenge={challenge}/>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'antd';
 
-export const Form = (props) => {
+export const ChallengeForm = (props) => {
 
     return (
         <div>

@@ -7,9 +7,10 @@ import { LeagueTable } from '../components/leaguetable/LeagueTable';
 import { AddPlayer } from '../components/Players/AddPlayer';
 import { AddResults } from '../components/results/AddResults';
 import { CreateChallenge } from '../components/challenges/CreateChallenge';
-import { PreviousResults } from '../components/results/PreviousResults';
+import { ViewResults } from '../components/results/ViewResults';
 import { useGetRequest } from '../helpers/GetRequest';
 import { Spin } from 'antd';
+import { ViewChallenges } from '../components/challenges/ViewChallenges';
 
 export const Display = () => {
 
@@ -30,16 +31,15 @@ export const Display = () => {
     }
     return (
         <div className='mainContainer'>
-                <NavBar />
-                <Route exact path="/" render={(props) => <LeagueTable {...props} players={players} />} />
-                <Route exact path="/players" render={(props) => <Players {...props} players={players} handleClick={handleClick} />} />
-                <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />
-                {/* <Route exact path="/matches" render={(props) => <MatchCreation {...props} players={players} />} /> */}
+            <NavBar />
+            <Route exact path="/" render={(props) => <LeagueTable {...props} players={players} />} />
+            <Route exact path="/players" render={(props) => <Players {...props} players={players} handleClick={handleClick} />} />
+            <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />
             <Route exact path="/createchallenge" render={(props) => <CreateChallenge {...props} players={players} />} />
-                <Route exact path="/addplayer" component={AddPlayer} />
-                <Route exact path="/addResult" render={(props) => <AddResults {...props} players={players} />} />
-                <Route exact path="/results" component={PreviousResults} />
-            
+            <Route exact path="/addplayer" component={AddPlayer} />
+            <Route exact path="/addResult" render={(props) => <AddResults {...props} players={players} />} />
+            <Route exact path="/viewresults" component={ViewResults} />
+            <Route exact path="/challenges" component={ViewChallenges} />
         </div>
 
     )
