@@ -1,10 +1,19 @@
 import React from 'react';
-import { Dropdown } from 'antd';
+import { Dropdown, Button, DatePicker } from 'antd';
+import Styled from 'styled-components';
+
+const Div = Styled.div`
+    display: flex;
+    border: 1px black solid;
+    padding: 1rem;
+`
 
 export const ChallengeForm = (props) => {
 
     return (
+        <Div>
         <div>
+            <h1>Add A Challenge</h1>
             <div id="components-dropdown-demo-dropdown-button">
                 <Dropdown.Button overlay={props.challenge.challengerMenu}>
                     Challenger
@@ -18,7 +27,7 @@ export const ChallengeForm = (props) => {
                 <Dropdown.Button overlay={props.challenge.rulesetMenu}>
                     Ruleset
             </Dropdown.Button>
-            </div>
+        </div>
 
             <form onSubmit={e => props.challenge.submitHandler(e)}>
                 <input
@@ -53,14 +62,10 @@ export const ChallengeForm = (props) => {
                     name='pot'
                     onChange={props.challenge.potChangeHandler}
                 />
-                <input
-                    className='textInput'
-                    type='date'
-                    name='date'
-                    onChange={props.challenge.dateChangeHandler}
-                />
-                <button>Submit</button>
+                <DatePicker onChange={props.challenge.dateChangeHandler} />  
+                <Button htmlType='submit'>Submit</Button>
             </form>
-        </div>
+            </div>
+        </Div>
     )
 }

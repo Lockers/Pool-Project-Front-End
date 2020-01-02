@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import Axios from 'axios';
 
-const url = 'http://localhost:5000/players/';
-// const url = 'https://telford-pool-back-end.herokuapp.com/players/';
+// const url = 'http://localhost:5000/players/';
+const url = 'https://telford-pool-back-end.herokuapp.com/players/';
 
 export const useDeleteRequest = (endpoint, fire) => {
     useEffect(() => {

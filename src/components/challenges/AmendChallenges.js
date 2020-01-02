@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGetRequest } from '../../helpers/GetRequest';
 import { NavLink } from 'react-router-dom';
-import { Spin } from 'antd';
+import { Spin, Button } from 'antd';
 import Styled from 'styled-components';
 import Moment from 'react-moment';
 
@@ -13,9 +13,6 @@ export const AmendChallenges = (props) => {
     if (!challenges) {
         return <Spin />
     }
-
-    console.log(props)
-
     return (
         <div>
             {challenges.data.map(challenge => {
@@ -28,7 +25,7 @@ export const AmendChallenges = (props) => {
                         <span>{challenge.pot}</span>
                         <span><Moment format="DD/MM/YYYY">{challenge.date}</Moment></span>
                     </Span>
-                    <NavLink to='submitchallenge'><button onClick={e => props.resultHandler(challenge)}>Result</button></NavLink>
+                    <NavLink to='submitchallenge'><Button onClick={e => props.resultHandler(challenge)}>Result</Button></NavLink>
                 </div>
             })}
         </div>

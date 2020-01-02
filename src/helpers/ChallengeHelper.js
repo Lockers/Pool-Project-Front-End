@@ -68,13 +68,13 @@ export const useChallengeCreator = (players) => {
         setNewChallenge({ ...newChallenge, pot: e.target.value })
     }
 
-    function dateChangeHandler(e) {
-        e.preventDefault()
-        setNewChallenge({ ...newChallenge, date: Date(e.target.value) })
+    function dateChangeHandler(date, dateString) {
+        console.log(date)
+        setNewChallenge({ ...newChallenge, date: Date(dateString) })
     }
     function submitHandler(e) {
+        console.log('firing')
         e.preventDefault()
-        console.log(newChallenge)
         setSend(true)
     }
 
@@ -104,6 +104,7 @@ export const useChallengeCreator = (players) => {
             {rulesets.map((ruleset, index) => <Menu.Item key={index}>{ruleset}</Menu.Item>)}
         </Menu>
     );
+    
     return {
         ruleSet,
         rulesetMenu,

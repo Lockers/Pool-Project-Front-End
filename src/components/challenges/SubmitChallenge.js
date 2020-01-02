@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Spin } from 'antd';
+import { Spin, Button } from 'antd';
 import { usePostRequest } from '../../helpers/PostRequest';
 
 export const SubmitChallenge = (props) => {
@@ -8,7 +8,6 @@ export const SubmitChallenge = (props) => {
     const [fire, setFire] = useState(false)
 
     usePostRequest('results/submit', challenge, fire)
-    console.log(props)
     if (!props.individualChallenge) {
         return <Spin />
     }
@@ -60,7 +59,7 @@ export const SubmitChallenge = (props) => {
                     name='challenged'
                     value={props.individualChallenge.challenged}
                 />
-                <button>Submit</button>
+                <Button>Submit</Button>
             </form>
         </div>
     )
