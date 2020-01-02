@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from 'antd';
-import { usePostRequest } from '../../helpers/PostRequest';
 import '../../App.css';
 import Styled from 'styled-components';
 

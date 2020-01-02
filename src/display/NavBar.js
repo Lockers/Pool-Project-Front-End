@@ -15,6 +15,7 @@ export const NavBar = () => {
                 <NavLink onClick={myFunction} to="/playeradmin">Player Admin</NavLink>
                 <NavLink onClick={myFunction} to="/addresult">Result Admin</NavLink>
                 <NavLink onClick={myFunction} to="/createchallenge">Challenge Admin</NavLink>
+                {/* <NavLink onClick={myFunction} to="/testarchive">Test</NavLink> */}
             </div>
         </div>
     )
