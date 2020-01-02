@@ -12,8 +12,9 @@ export const LeagueTable = (props) => {
             Version 0.9 Beta
             <Table
                 rowClassName={(record, index) => record.challengable ? 'trueChallenge' : 'falseChallenge'}
+                rowSelection={props}
                 rowKey={dataSource => dataSource._id}
-                dataSource={props.players.data} columns={columns} pagination={{pageSize: 50}}
+                dataSource={props.players.data} columns={ columns } pagination={{pageSize: 50}}
             
             />
             

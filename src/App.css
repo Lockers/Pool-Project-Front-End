@@ -29,13 +29,14 @@ body {
   font-size: smaller;
   text-align: center;
   background-color: lightgreen;
-  width: 500px
+  width: 20%;
 }
 
 .falseChallenge {
   background-color: orange;
   font-size: smaller;
   text-align: center;
+  width: 1000px;
 }
 
 form {

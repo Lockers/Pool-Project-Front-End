@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { usePostRequest } from '../../helpers/PostRequest';
+import { useDeleteRequest } from '../../helpers/DeleteRequest';
+import { Spin } from 'antd';
 
-export const AddPlayer = () => {
+
+export const AddPlayer = (props) => {
     const [newPlayer, setNewPlayer] = useState([]);
     const [sendRequest, setSendRequest] = useState(false)
+    const [deleteMe, setDeleteMe] = useState('')
+    const [fire, setFire] = useState(false)
+
+    useDeleteRequest(deleteMe, fire)
+
     let toAdd = { name: '', dateOfBirth: '', leaguePosition: null, played: 0, won: 0, lost: 0, totalPrizeMoney: 0, results: [], challengable: true }
     usePostRequest('players', newPlayer, sendRequest)
     
@@ -11,6 +19,15 @@ export const AddPlayer = () => {
         e.preventDefault()
         setNewPlayer(toAdd)
         setSendRequest(true)
+    }
+
+    function handleSelectChange(e) {
+        e.preventDefault()
+        setDeleteMe(e.target.value)
+    }
+    function deleteHandler(e) {
+        e.preventDefault()
+        setFire(true)
     }
 
     const nameChangeHandler = (e) => {
@@ -27,8 +44,12 @@ export const AddPlayer = () => {
         e.preventDefault()
         toAdd = { ...toAdd, leaguePosition: e.target.value }
     }
-
+    if (!props.players) {
+       return <Spin />
+   }
     return (
+        <div>
+        <div>
         <form onSubmit={e => submitNewPlayer(e)}>
             <input
                 type='text'
@@ -47,6 +68,25 @@ export const AddPlayer = () => {
             />
 
             <button>Add Player</button>
-        </form>
+            </form>
+        </div>
+        <div>
+            <select onChange={handleSelectChange}>
+                {props.players.data.map(player => {
+                    return <option key={player._id}>{player.name}</option>
+                
+        })}
+                </select>
+                <form onSubmit={deleteHandler}>
+                    <input
+                        type='text'
+                        name='delete'
+                        value={deleteMe}
+                        
+                    />
+                    <button>Delete this guy</button> 
+                </form>
+            </div>
+        </div>
     )
 }

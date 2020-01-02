@@ -1,17 +1,24 @@
 import { useEffect } from 'react';
 import Axios from 'axios';
 
-export const useDeleteRequest = (endpoint) => {
+const url = 'http://localhost:5000/players/';
+// const url = 'https://telford-pool-back-end.herokuapp.com/players/';
+
+export const useDeleteRequest = (endpoint, fire) => {
     useEffect(() => {
-        if(endpoint)
+        if(fire === true)
             Axios
-                .delete(`https://telford-pool-back-end.herokuapp.com/players/${endpoint}`)
+                .delete(`${url}${endpoint}`)
                 .then(response => {
+                    alert('Player Deleted')
                     console.log('happy Path');
                     window.location.reload();
+                    
                 })
                 .catch(error => {
-                    return console.log('Sad Path', error);
+                    alert('something went wrong')
+                    console.log('Sad Path', error);
+                    window.location.reload();
                 })
-    }, [endpoint])
+    }, [endpoint, fire])
 }

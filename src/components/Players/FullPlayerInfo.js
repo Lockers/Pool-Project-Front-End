@@ -14,7 +14,7 @@ export const FullPlayerInfo = (props) => {
             <Spin />
         )
     }
-    console.log(props)
+
     return (
         <div>
             <p>Name: {props.player[0].name}</p>

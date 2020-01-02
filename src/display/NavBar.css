@@ -5,34 +5,36 @@ body {
 }
 
 .links {
-    margin: 0.25rem;
+    margin: 0.5rem;
 }
 
 /* Style the navigation menu */
 .topnav {
     overflow: hidden;
     background-color: darkgrey;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
 }
 
 /* Hide the links inside the navigation menu (except for logo/home) */
 .topnav #myLinks {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Style navigation menu links */
 .topnav a {
     color: white;
-    padding: 14px 16px;
+    padding: 1.6rem, 2rem;
     text-decoration: none;
-    font-size: 17px;
-    display: block;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 /* Style the hamburger menu */
 .topnav a.icon {
     background: white;
-    display: block;
+    display: flex;
     position: absolute;
     right: 0;
     top: 0;
