@@ -37,7 +37,8 @@ export const useChallengeCreator = (players) => {
             item.leaguePosition === player[0].leaguePosition - 1 ||
             item.leaguePosition === player[0].leaguePosition - 2 ||
             item.leaguePosition === player[0].leaguePosition - 3 ||
-            item.leaguePosition === player[0].leaguePosition - 4
+            item.leaguePosition === player[0].leaguePosition - 4 ||
+            item.leaguePosition === player[0].leaguePosition - 5
         )
         setChallengedArray(challengedArray)
         setNewChallenge({ ...newChallenge, challenger: player[0].name })

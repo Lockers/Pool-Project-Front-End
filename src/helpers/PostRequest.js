@@ -17,7 +17,9 @@ export const usePostRequest = (endpoint, data, fire) => {
                     
                 })
                 .catch(error => {
-                    return console.log('Sad Path', error);
+                    console.log('sad Path');
+                    alert('Not added you mong')
+                    window.location.reload()
                 })
     }, [endpoint, data, fire])
 }
