@@ -3,7 +3,8 @@ import { Players } from '../components/Players/Players';
 import { Route } from 'react-router-dom';
 import { NavBar } from './NavBar';
 import { FullPlayerInfo } from '../components/Players/FullPlayerInfo';
-import { LeagueTable } from '../components/leaguetable/LeagueTable';
+// import { LeagueTable } from '../components/leaguetable/LeagueTable';
+import { LeagueTableTest } from '../components/leaguetable/LeagueTableTest';
 import { AddPlayer } from '../components/Players/AddPlayer';
 import { AddResults } from '../components/results/AddResults';
 import CreateChallenge from '../components/challenges/CreateChallenge';
@@ -39,7 +40,7 @@ export const Display = () => {
     return (
         <div className='mainContainer'>
             <NavBar />
-            <Route exact path="/" render={(props) => <LeagueTable {...props} players={players} />} />
+            <Route exact path="/" render={(props) => <LeagueTableTest {...props} players={players} />} />
             <Route exact path="/players" render={(props) => <Players {...props} players={players} handleClick={handleClick} />} />
             <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />
             <Route exact path="/playeradmin" render={(props) => <AddPlayer {...props} players={players} />} />

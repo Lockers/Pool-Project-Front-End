@@ -29,10 +29,6 @@ export const AddPlayer = (props) => {
         setSendRequest(true)
     }
 
-    function handleSelectChange(e) {
-        e.preventDefault()
-        setDeleteMe(e.target.value)
-    }
     function deleteHandler(e) {
         e.preventDefault()
         setFire(true)
