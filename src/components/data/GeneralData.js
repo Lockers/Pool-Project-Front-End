@@ -48,7 +48,7 @@ export const columns = [
         key: 'lost'
     },
     {
-        title: 'Total Prize Money',
+        title: 'Total Prize Money £',
         dataIndex: 'totalPrizeMoney',
         key: 'totalPrizeMoney'
     },

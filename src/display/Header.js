@@ -12,7 +12,6 @@ import { useGetRequest } from '../helpers/GetRequest';
 import { Spin } from 'antd';
 import { ViewChallenges } from '../components/challenges/ViewChallenges';
 import { SubmitChallenge } from '../components/challenges/SubmitChallenge';
-import PrivateRoute from '../../src/components/auth/PrivateRoute';
 // import { TestArchive } from '../components/testArchive';
 
 export const Display = () => {
@@ -43,14 +42,13 @@ export const Display = () => {
             <Route exact path="/" render={(props) => <LeagueTable {...props} players={players} />} />
             <Route exact path="/players" render={(props) => <Players {...props} players={players} handleClick={handleClick} />} />
             <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />
-            {/* <PrivateRoute exact path="/createchallenge" render={(props) => <CreateChallenge {...props} players={players} />} /> */}
             <Route exact path="/playeradmin" render={(props) => <AddPlayer {...props} players={players} />} />
             <Route exact path="/addResult" render={(props) => <AddResults {...props} players={players} />} />
             <Route exact path="/viewresults" component={ViewResults} />
-            <Route exact path="/challenges" render={(props) => <ViewChallenges {...props} resultHandler={resultHandler} />} />
+            <Route exact path="/challenges" render={(props) => <ViewChallenges {...props} />} />
+            <Route exact path="/submitchallenge" render={(props) => <SubmitChallenge {...props} individualChallenge={individualChallenge} />} />
+            <Route exact path="/createchallenge" render={(props) => <CreateChallenge {...props} players={players} resultHandler={resultHandler} />} />
             {/* <Route exact path="/testarchive" render={(props) => <TestArchive {...props} players={players} />} /> */}
-            {/* <PrivateRoute exact path="/submitchallenge" render={(props) => <SubmitChallenge {...props} individualChallenge={individualChallenge} />} /> */}
-            {/* <PrivateRoute path="/createchallenge" render={<CreateChallenge players={players} />} /> */}
         </div> 
 
     )

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useChallengeCreator } from '../../helpers/ChallengeHelper';
 import { ChallengeForm } from './ChallengeForm';
+import { AmendChallenges } from './AmendChallenges'
 
 const CreateChallenge = (props) => {
 
@@ -8,7 +9,8 @@ const CreateChallenge = (props) => {
 
     return (
         <div>
-            <ChallengeForm challenge={challenge}/>
+            <ChallengeForm challenge={challenge} />
+            <AmendChallenges resultHandler={props.resultHandler}/>
         </div>
     )
 }
