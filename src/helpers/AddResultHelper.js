@@ -21,15 +21,14 @@ export const useResultHelper = (players) => {
     const [sendRequest, setSendRequest] = useState(false)
 
     usePostRequest('results', newResult, sendRequest)    
-    function dateChangeHandler(e) {
-        e.preventDefault()
-        setNewResult({ ...newResult, date: e.target.value })
-        console.log(newResult)
+    function dateChangeHandler(date, dateString) {
+        setNewResult({ ...newResult, date: Date(dateString) })
+        console.log(date)
     }
     function newResultSubmitHandler(e) {
         e.preventDefault()
         setSendRequest(true)
-        console.log(newResult)
+
     }
     function handleChallengerClick(e) {
         setChallengerId(e.item.props.children);
@@ -54,22 +53,15 @@ export const useResultHelper = (players) => {
     
     function challengerScoreChangeHandler(e) {
         e.preventDefault()
-
-        console.log('Am I firing')
         setNewResult({ ...newResult, challengerScore: e.target.value })
     }
     function challengedScoreChangeHandler(e) {
         e.preventDefault()
-
-        console.log('Am I firing')
         setNewResult({ ...newResult, challengedScore: e.target.value })
     }
     function potChangeHandler(e) {
         e.preventDefault()
-
-        console.log('Am I firing')
         setNewResult({ ...newResult, pot: e.target.value })
-        console.log(newResult)
     }
 
     const challengerMenu = (

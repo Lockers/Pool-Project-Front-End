@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown } from 'antd';
+import { Dropdown, Button, DatePicker } from 'antd';
 import { useResultHelper } from '../../helpers/AddResultHelper';
 
 export const AddResults = (props) => {
@@ -67,17 +67,10 @@ export const AddResults = (props) => {
                     name='pot'
                     onChange={e => dunno.potChangeHandler(e)}
                 />
-                <input
-                    className='textInput'
-                    type='date'
-                    name='date'
-                    onChange={e => dunno.dateChangeHandler(e)}
-                />
-                <button>Submit</button>
+                <DatePicker onChange={dunno.dateChangeHandler} />  
+                <Button htmlType='submit'>Submit</Button>
             </form>
         </div>
     )
-
-
 
 }

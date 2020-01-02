@@ -59,7 +59,7 @@ export const SubmitChallenge = (props) => {
                     name='challenged'
                     value={props.individualChallenge.challenged}
                 />
-                <Button>Submit</Button>
+                <Button htmlType='submit'>Submit</Button>
             </form>
         </div>
     )
