@@ -12,10 +12,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Styled from 'styled-components'
 
 const Div = Styled.div`
+  display: flex;
+  justify-items: center;
   height: 200px;
   background-image: url('https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/60226370_451746165574309_3893019607623008256_o.png?_nc_cat=104&_nc_ohc=WAs40wpBGVQAQmWyYQRg3rP0rIG78D8cYaszIjXdIQUUTutGy_GxJk6ZQ&_nc_ht=scontent-lhr3-1.xx&oh=adcd199920e219030e7fe360eceb8dae&oe=5EA43766');
-  background-size: 495px 200px;
+  background-size: 450px 200px;
   background-repeat: no-repeat;
+  margin: 1rem 0rem 1rem 1.5rem ;
 `
 
 const StyledMenu = withStyles({
