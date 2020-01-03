@@ -14,7 +14,7 @@ import Styled from 'styled-components'
 const Div = Styled.div`
   height: 200px;
   background-image: url('https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/60226370_451746165574309_3893019607623008256_o.png?_nc_cat=104&_nc_ohc=WAs40wpBGVQAQmWyYQRg3rP0rIG78D8cYaszIjXdIQUUTutGy_GxJk6ZQ&_nc_ht=scontent-lhr3-1.xx&oh=adcd199920e219030e7fe360eceb8dae&oe=5EA43766');
-  background-size: 550px 200px;
+  background-size: 495px 200px;
   background-repeat: no-repeat;
 `
 
@@ -79,7 +79,7 @@ export default function CustomizedMenus() {
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
-                onClose={handleClose}
+                onClick={handleClose}
             >
                 <StyledMenuItem>
                     <ListItemIcon>
