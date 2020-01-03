@@ -41,7 +41,7 @@ export const Display = () => {
     return (
         <div className='mainContainer'>
             <NavBarTest />
-            <Route exact path="/leaguetable" render={(props) => <LeagueTableTest {...props} players={players} />} />
+            <Route exact path="/" render={(props) => <LeagueTableTest {...props} players={players} />} />
             <Route exact path="/players" render={(props) => <Players {...props} players={players} handleClick={handleClick} />} />
             <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />
             <Route exact path="/viewresults" component={ViewResults} />
