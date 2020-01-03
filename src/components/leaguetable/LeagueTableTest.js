@@ -8,37 +8,26 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import { green } from '@material-ui/core/colors';
+import moment from 'moment';
+
+
 //Import Column Data to set up table
 
 const columns = [
+    { id: 'leaguePosition', label: 'League Position', minWidth: 100 },
     { id: 'name', label: 'Name', minWidth: 100 },
     { id: 'played', label: 'P', minWidth: 50 },
     { id: 'won', label: 'W', minWidth: 50, align: 'right'},
     { id: 'lost', label: 'L', minWidth: 50, align: 'right'},
-    { id: 'totalPrizeMoney', label: 'Total Prize Money', minWidth: 100, align: 'right'},
+    { id: 'totalPrizeMoney', label: 'Total Prize Money', minWidth: 100, align: 'right' },
+    { id: 'daysLeft', label: 'Days Left', minWidth: 50, align: 'right' },
 ];
 
-function createData(name, played, won, lost, totalPrizeMoney) {
-    return { name, played, won, lost, totalPrizeMoney };
+function createData(leaguePosition, name, played, won, lost, totalPrizeMoney, challengable, daysLeft) {
+    return { leaguePosition, name, played, won, lost, totalPrizeMoney, challengable, daysLeft };
 }
 
-// const rows = [
-//     createData('India', 'IN', 1324171354, 3287263),
-//     createData('China', 'CN', 1403500365, 9596961),
-//     createData('Italy', 'IT', 60483973, 301340),
-//     createData('United States', 'US', 327167434, 9833520),
-//     createData('Canada', 'CA', 37602103, 9984670),
-//     createData('Australia', 'AU', 25475400, 7692024),
-//     createData('Germany', 'DE', 83019200, 357578),
-//     createData('Ireland', 'IE', 4857000, 70273),
-//     createData('Mexico', 'MX', 126577691, 1972550),
-//     createData('Japan', 'JP', 126317000, 377973),
-//     createData('France', 'FR', 67022000, 640679),
-//     createData('United Kingdom', 'GB', 67545757, 242495),
-//     createData('Russia', 'RU', 146793744, 17098246),
-//     createData('Nigeria', 'NG', 200962417, 923768),
-//     createData('Brazil', 'BR', 210147125, 8515767),
-// ];
 
 const useStyles = makeStyles({
     root: {
@@ -47,26 +36,34 @@ const useStyles = makeStyles({
     container: {
         maxHeight: 440,
     },
+    
 });
 
-
+function parseDate(input) {
+    var parts = input.split('-');
+    // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+    return new Date(parts[0], parts[1] - 1, parts[2]); // Note: months are 0-based
+}
 
 export const LeagueTableTest = (props) => {
-
-    // console.log(props)
     const rows = []
 
     props.players.data.map(player => {
-        return rows.push(createData(player.name, player.played, player.won, player.lost, player.totalPrizeMoney))
+        
+        const hi = new Date(Date.parse(player.results.slice(-1)[0].date)).toString();
+        const lol = Date.parse(hi)
+        const newDate = Date.now();
+        
+        const daysLeft = newDate - lol
+        const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
+        const days = Math.round(sum)
+        console.log(days)
+        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.totalPrizeMoney, player.challengable, days ))
     })
     
-    console.log(rows)
-
-
-
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [rowsPerPage, setRowsPerPage] = React.useState(50);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -97,7 +94,7 @@ export const LeagueTableTest = (props) => {
                     <TableBody>
                         {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                <TableRow hover role="checkbox" tabIndex={-1} key={row.leaguePosition} style={row.challengable ? { backgroundColor: 'green' } : { backgroundColor: 'orange' }}>
                                     {columns.map(column => {
                                         const value = row[column.id];
                                         return (

@@ -25,19 +25,6 @@ body {
   color: #09d3ac;
 }
 
-.trueChallenge {
-  font-size: smaller;
-  text-align: center;
-  background-color: lightgreen;
-  width: 20%;
-}
-
-.falseChallenge {
-  background-color: orange;
-  font-size: smaller;
-  text-align: center;
-  width: 1000px;
-}
 
 form {
   margin-top: 5rem;
@@ -53,10 +40,6 @@ form {
   flex-wrap: wrap;
   width: 100%;
 
-}
-
-.ant-card-body {
-  
 }
 
 input {
