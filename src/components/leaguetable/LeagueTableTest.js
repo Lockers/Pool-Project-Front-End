@@ -8,9 +8,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { green } from '@material-ui/core/colors';
-import moment from 'moment';
-
 
 //Import Column Data to set up table
 
@@ -20,7 +17,7 @@ const columns = [
     { id: 'played', label: 'P', minWidth: 50 },
     { id: 'won', label: 'W', minWidth: 50, align: 'right'},
     { id: 'lost', label: 'L', minWidth: 50, align: 'right'},
-    { id: 'totalPrizeMoney', label: 'Total Prize Money', minWidth: 100, align: 'right' },
+    { id: 'totalPrizeMoney', label: 'Total Prize Money £', minWidth: 100, align: 'right' },
     { id: 'daysLeft', label: 'Days Left', minWidth: 50, align: 'right' },
 ];
 
@@ -39,11 +36,6 @@ const useStyles = makeStyles({
     
 });
 
-function parseDate(input) {
-    var parts = input.split('-');
-    // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
-    return new Date(parts[0], parts[1] - 1, parts[2]); // Note: months are 0-based
-}
 
 export const LeagueTableTest = (props) => {
     const rows = []
@@ -94,7 +86,7 @@ export const LeagueTableTest = (props) => {
                     <TableBody>
                         {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.leaguePosition} style={row.challengable ? { backgroundColor: 'green' } : { backgroundColor: 'orange' }}>
+                                <TableRow hover role="checkbox" tabIndex={-1} key={row.leaguePosition} style={row.challengable ? { backgroundColor: 'lightgreen' } : { backgroundColor: 'orange' }}>
                                     {columns.map(column => {
                                         const value = row[column.id];
                                         return (

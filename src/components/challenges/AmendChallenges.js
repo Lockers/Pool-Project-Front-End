@@ -8,6 +8,10 @@ import Moment from 'react-moment';
 const Span = Styled.span`
     margin: 1rem;
 `
+const Div = Styled.div`
+    border: 1px solid black;
+    display:flex;
+`
 export const AmendChallenges = (props) => {
     const challenges = useGetRequest('challenges')
     if (!challenges) {
@@ -16,7 +20,7 @@ export const AmendChallenges = (props) => {
     return (
         <div>
             {challenges.data.map(challenge => {
-                return <div key={challenge._id}>
+                return <Div key={challenge._id}>
                     <Span>
                         <span>{challenge.challenger}</span> V
                         <span>{challenge.challenged}</span>
@@ -26,7 +30,8 @@ export const AmendChallenges = (props) => {
                         <span><Moment format="DD/MM/YYYY">{challenge.date}</Moment></span>
                     </Span>
                     <NavLink to='submitchallenge'><Button onClick={e => props.resultHandler(challenge)}>Result</Button></NavLink>
-                </div>
+                    <NavLink to='editchallenge'><Button onClick={e => props.resultHandler(challenge)}>Edit</Button></NavLink>
+                </Div>
             })}
         </div>
     )

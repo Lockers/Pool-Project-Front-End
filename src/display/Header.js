@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Players } from '../components/Players/Players';
 import { Route } from 'react-router-dom';
-import { NavBar } from './NavBar';
+// import { NavBar } from './NavBar';
+import NavBarTest from './NavBarTest';
 import { FullPlayerInfo } from '../components/Players/FullPlayerInfo';
 // import { LeagueTable } from '../components/leaguetable/LeagueTable';
 import { LeagueTableTest } from '../components/leaguetable/LeagueTableTest';
@@ -39,14 +40,14 @@ export const Display = () => {
     }
     return (
         <div className='mainContainer'>
-            <NavBar />
-            <Route exact path="/" render={(props) => <LeagueTableTest {...props} players={players} />} />
+            <NavBarTest />
+            <Route exact path="/leaguetable" render={(props) => <LeagueTableTest {...props} players={players} />} />
             <Route exact path="/players" render={(props) => <Players {...props} players={players} handleClick={handleClick} />} />
             <Route path="/players/:id" render={(props) => <FullPlayerInfo {...props} player={individualPlayer} />} />
-            <Route exact path="/playeradmin" render={(props) => <AddPlayer {...props} players={players} />} />
-            <Route exact path="/addResult" render={(props) => <AddResults {...props} players={players} />} />
             <Route exact path="/viewresults" component={ViewResults} />
             <Route exact path="/challenges" render={(props) => <ViewChallenges {...props} />} />
+            <Route exact path="/addResult" render={(props) => <AddResults {...props} players={players} />} />
+            <Route exact path="/playeradmin" render={(props) => <AddPlayer {...props} players={players} />} />
             <Route exact path="/submitchallenge" render={(props) => <SubmitChallenge {...props} individualChallenge={individualChallenge} />} />
             <Route exact path="/createchallenge" render={(props) => <CreateChallenge {...props} players={players} resultHandler={resultHandler} />} />
             {/* <Route exact path="/testarchive" render={(props) => <TestArchive {...props} players={players} />} /> */}
