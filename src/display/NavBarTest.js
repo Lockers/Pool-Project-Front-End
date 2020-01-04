@@ -64,7 +64,7 @@ export default function CustomizedMenus() {
     };
 
     return (
-        <div className='header'>
+        <div>
         <Div>
         </Div>
         <div>
@@ -75,7 +75,7 @@ export default function CustomizedMenus() {
                 color="primary"
                 onClick={handleClick}
             >
-                Open Menu
+                Menu
       </Button>
             <StyledMenu
                 id="customized-menu"
@@ -101,7 +101,13 @@ export default function CustomizedMenus() {
                         {/* <InboxIcon fontSize="small" /> */}
                     </ListItemIcon>
                     <ListItemText primary={<NavLink to="/players">Players</NavLink>} />
-                </StyledMenuItem>
+                    </StyledMenuItem>
+                    <StyledMenuItem>
+                        <ListItemIcon>
+                            {/* <InboxIcon fontSize="small" /> */}
+                        </ListItemIcon>
+                        <ListItemText primary={<NavLink  to="/admin">Admin</NavLink>} />
+                    </StyledMenuItem>
             </StyledMenu>
             </div>
         </div>

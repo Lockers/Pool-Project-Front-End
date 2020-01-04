@@ -7,8 +7,9 @@ import Moment from 'react-moment';
 const Span = Styled.span`
     margin: 1rem;
 `
-export const ViewChallenges = (props) => {
+export const ViewChallenges = () => {
     const challenges = useGetRequest('challenges')
+
     if (!challenges) {
         return <Spin />
     }

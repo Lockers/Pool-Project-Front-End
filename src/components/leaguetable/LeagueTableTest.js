@@ -8,6 +8,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import { useGetRequest } from '../../helpers/GetRequest';
+import { Loader } from '../../misc/Loader';
 
 //Import Column Data to set up table
 
@@ -29,6 +31,7 @@ function createData(leaguePosition, name, played, won, lost, totalPrizeMoney, ch
 const useStyles = makeStyles({
     root: {
         width: '100%',
+        marginTop: '1rem',
     },
     container: {
         maxHeight: 440,
@@ -37,10 +40,20 @@ const useStyles = makeStyles({
 });
 
 
-export const LeagueTableTest = (props) => {
+export const LeagueTableTest = () => {
+    const classes = useStyles();
+    const [page, setPage] = React.useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(50);
+
+    const players = useGetRequest('players')
+
+    if (!players) {
+        return <Loader />
+    }
+
     const rows = []
 
-    props.players.data.map(player => {
+    players.data.map(player => {
         
         const hi = new Date(Date.parse(player.results.slice(-1)[0].date)).toString();
         const lol = Date.parse(hi)
@@ -49,13 +62,8 @@ export const LeagueTableTest = (props) => {
         const daysLeft = newDate - lol
         const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
         const days = Math.round(sum)
-        console.log(days)
         return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.totalPrizeMoney, player.challengable, days ))
     })
-    
-    const classes = useStyles();
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(50);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);

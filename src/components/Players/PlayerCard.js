@@ -1,28 +1,3 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { Card } from 'antd';
-// import '../../App.css';
-// import Styled from 'styled-components';
-
-// const Div = Styled.div`
-//     margin: 0 auto;
-// `
-// export const PlayerCard = (props) => {
-    
-//     return (
-//         <Div className='playerCards'>
-            
-//             <Card title={props.player.name} style={{ width: '500px', margin: '1rem' }}>
-//                 <p>{props.player.name}</p>
-//                 <p>{props.player.dateOfBirth}</p>
-//                 <p>{props.player.leaguePosition}</p>
-
-                
-//             </Card>
-//         </Div>
-//     )
-// };
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -72,7 +47,6 @@ export const PlayerCard = (props) => {
             </CardContent>
             <CardActions>
                 <Link to={`/players/${props.player._id}`}><Button onClick={(e) => props.handleClick(props.player._id)}>More Info</Button></Link>
-                
             </CardActions>
         </Card>
     );
