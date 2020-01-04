@@ -6,9 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
-import { Loader } from '../../misc/Loader';
 import Styled from 'styled-components';
-import { useDeleteRequest } from '../../helpers/DeleteRequest';
+import { useDeleteRequest } from '../../../helpers/DeleteRequest';
 
 const DeleteDiv = Styled.div`
     border: 1px solid black;
@@ -76,9 +75,6 @@ export const DeletePlayer = (props) => {
         setFire(true)
     }
 
-    if (!props.players) {
-        return <Loader />
-    }
     return (
         <DeleteDiv>
             <h1>Delete Player</h1>
