@@ -46,7 +46,7 @@ export const PlayerCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Link to={`/players/${props.player._id}`}><Button onClick={(e) => props.handleClick(props.player._id)}>More Info</Button></Link>
+                <Link to={`/players/${props.player._id}`}><Button variant='contained' color='primary' onClick={(e) => props.handleClick(props.player._id)}>More Info</Button></Link>
             </CardActions>
         </Card>
     );

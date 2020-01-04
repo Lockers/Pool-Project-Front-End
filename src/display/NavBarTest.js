@@ -106,7 +106,13 @@ export default function CustomizedMenus() {
                         <ListItemIcon>
                             {/* <InboxIcon fontSize="small" /> */}
                         </ListItemIcon>
-                        <ListItemText primary={<NavLink  to="/admin">Admin</NavLink>} />
+                        <ListItemText primary={<NavLink  to="/challenges">Upcoming Challenges</NavLink>} />
+                    </StyledMenuItem>
+                    <StyledMenuItem>
+                        <ListItemIcon>
+                            {/* <InboxIcon fontSize="small" /> */}
+                        </ListItemIcon>
+                        <ListItemText primary={<NavLink to="/admin">Admin</NavLink>} />
                     </StyledMenuItem>
             </StyledMenu>
             </div>

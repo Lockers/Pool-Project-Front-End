@@ -1,33 +1,44 @@
 import React from 'react';
-import { useGetRequest } from '../../helpers/GetRequest';
-import { Spin } from 'antd';
-import Styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import Moment from 'react-moment';
+import { useGetRequest } from '../../helpers/GetRequest';
+import { Loader } from '../../misc/Loader';
 
-const Span = Styled.span`
-    margin: 1rem;
-`
+const useStyles = makeStyles(theme => ({
+    root: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
+    },
+}));
+
 export const ViewChallenges = () => {
     const challenges = useGetRequest('challenges')
+    const classes = useStyles();
 
     if (!challenges) {
-        return <Spin />
+        return <Loader />
     }
-    
     return (
+        
         <div>
             {challenges.data.map(challenge => {
-                return <div key={challenge._id}>
-                    <Span>
-                        <span>{challenge.challenger}</span> V
-                        <span>{challenge.challenged}</span>
-                        <span>{challenge.venue}</span>
-                        <span>{challenge.ruleset}</span>
-                        <span>{challenge.pot}</span>
-                        <span><Moment format="DD/MM/YYYY">{challenge.date}</Moment></span>
-                    </Span>
-                    </div>
+                return (
+                    <List component="nav" className={classes.root} aria-label="mailbox folders">
+                        <ListItem button>
+                            <ListItemText>
+                                {challenge.challenger} v {challenge.challenged} <br />
+                                Venue: {challenge.venue} Rule set :{challenge.ruleset} <br />
+                                Pot: {challenge.pot} Date {challenge.date ? <Moment format="DD/MM/YYYY">{challenge.date}</Moment> : 'No Date'}
+                            </ListItemText>
+                            </ListItem>
+                         <Divider />
+                    </List>
+                )
             })}
         </div>
-    )
-}
+    )}

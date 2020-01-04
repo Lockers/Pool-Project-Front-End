@@ -1,5 +1,5 @@
 import 'date-fns';
-import React from 'react';
+import React, { useState } from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -13,6 +13,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Styled from 'styled-components';
+import { Loader } from '../../../misc/Loader';
+import { venues, rulesets } from '../../data/GeneralData';
+import { Button } from '@material-ui/core';
 
 const AddResult = Styled.div`
      border: 1px solid black;
@@ -30,178 +33,153 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export const AddResults = () => {
+export const AddResults = (props) => {
+
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [result, setResult] = useState({
+        challenger: '',
+        challengerScore: null,
+        challenged: '',
+        challengedScore: null,
+        venue: '',
+        ruleset: '',
+        pot: null,
+        date: new Date('2014-08-18T21:11:54')
+    });
 
     const handleDateChange = date => {
-        setSelectedDate(date);
+        setResult({ ...result, date: date });
+        console.log(result)
     };
 
-    // const inputLabel = React.useRef(null);
-    // const [labelWidth, setLabelWidth] = React.useState(0);
-    // React.useEffect(() => {
-    //     setLabelWidth(inputLabel.current.offsetWidth);
-    // }, []);
-
-    const handleChange = event => {
-        setAge(event.target.value);
+    const handleChallengerChange = event => {
+        setResult({ ...result, challenger: event.target.value });
     };
+
+    const handleChallengedChange = event => {
+        setResult({ ...result, challenged: event.target.value });
+    };
+
+    const handleChallengerScoreChangeHandler = event => {
+        setResult({ ...result, challengerScore: event.target.value });
+    };
+
+    const handleChallengedScoreChangeHandler = event => {
+        setResult({ ...result, challengedScore: event.target.value });
+    };
+
+    const handleVenueChange = event => {
+        setResult({ ...result, venue: event.target.value });
+    };
+
+    const handleRuleSetChange = event => {
+        setResult({ ...result, ruleset: event.target.value });
+    };
+
+    const handlePotChange = event => {
+        setResult({ ...result, pot: event.target.value });
+    };
+
+    
+
+    
+
+    if (!props.players) {
+        return <Loader />
+    }
 
     return (
         <AddResult>
             <h1>Add Historic Result</h1>
-            <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={age}
-                    onChange={handleChange}
-                >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>
-            <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={age}
-                    onChange={handleChange}
-                >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>
-            <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={age}
-                    onChange={handleChange}
-                >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>
-            <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={age}
-                    onChange={handleChange}
-                >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>
-            <form className={classes.root} noValidate autoComplete="off">
-                <TextField id="standard-basic" label="Standard" />
+            <form>
+                <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">Challenger</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={result.challenger}
+                        onChange={handleChallengerChange}
+                    >
+                        {props.players.data.map(player => <MenuItem key={player._id} value={player.name}>{player.name}</MenuItem>)}
+                    </Select>
+                    <TextField
+                        id="standard-number"
+                        label="Frames"
+                        type="number"
+                        onChange={handleChallengerScoreChangeHandler}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">Challenged</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={result.challenged}
+                        onChange={handleChallengedChange}
+                    >
+                        {props.players.data.map(player => <MenuItem key={player._id} value={player.name}>{player.name}</MenuItem>)}
+                    </Select>
+                    <TextField
+                        id="standard-number"
+                        label="Frames"
+                        type="number"
+                        onChange={handleChallengedScoreChangeHandler}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">Rule Set</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={result.venue}
+                        onChange={handleVenueChange}
+                    >
+                        {rulesets.map((item, index) => <MenuItem key={index} value={item}>{item}</MenuItem>)}
+                    </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">Venue</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={result.ruleset}
+                        onChange={handleRuleSetChange}
+                    >
+                        {venues.map((venue, index) => <MenuItem key={index} value={venue}>{venue}</MenuItem>)}
+                    </Select>
+                    <TextField
+                        id="standard-number"
+                        label="Pot"
+                        type="number"
+                        onChange={handlePotChange}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </FormControl>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <KeyboardDatePicker
+                        disableToolbar
+                        variant="inline"
+                        format="MM/dd/yyyy"
+                        margin="normal"
+                        id="date-picker-inline"
+                        label="Date picker inline"
+                        value={result.selectedDate}
+                        onChange={handleDateChange}
+                        KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                        }}
+                    />
+                </MuiPickersUtilsProvider>
+                <Button>Submit</Button>
             </form>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="MM/dd/yyyy"
-                margin="normal"
-                id="date-picker-inline"
-                label="Date picker inline"
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                }}
-                />
-            </MuiPickersUtilsProvider>
         </AddResult>
     );
 }
-
-
-
-
-// import React from 'react';
-// import { Dropdown, Button, DatePicker } from 'antd';
-// import { useResultHelper } from '../../../helpers/AddResultHelper';
-
-// export const AddResults = (props) => {
-//     const dunno = useResultHelper(props.players)
-//     return (
-//         <div>
-//             <div id="components-dropdown-demo-dropdown-button">
-//                 <Dropdown.Button onClick={dunno.handleButtonClick} overlay={dunno.challengerMenu}>
-//                     Challenger: {dunno.challengerId}
-//                 </Dropdown.Button>
-//                 <Dropdown.Button overlay={dunno.challengedMenu}>
-//                     Challenged: {dunno.challengedId}
-//                 </Dropdown.Button>
-//                 <Dropdown.Button overlay={dunno.venueMenu}>
-//                     Venue: {dunno.venue}
-//                 </Dropdown.Button>
-//                 <Dropdown.Button overlay={dunno.rulesetMenu}>
-//                     RuleSet: {dunno.ruleset}
-//                 </Dropdown.Button>
-
-//             </div>
-//             <form onSubmit={dunno.newResultSubmitHandler}>
-               
-//                 <input
-//                     className='textInput'
-//                     type='text'
-//                     name='challenger'
-//                     value={dunno.challengerId}
-//                     />
-//                 <input
-//                     className='numberInput'
-//                     type='number'
-//                     name='challengerFrames'
-//                     onChange={e => dunno.challengerScoreChangeHandler(e)}
-//                     />
-                
-//                 :
-//                  <input
-//                     className='numberInput'
-//                     type='number'
-//                     name='challengedFrames'
-//                     onChange={e => dunno.challengedScoreChangeHandler(e)}
-//                 />
-//                 <input
-//                     className='textInput'
-//                     type='text'
-//                     name='challenged'
-//                     value={dunno.challengedId}
-//                 />
-//                 <input
-//                     className='textInput'
-//                     type='text'
-//                     name='venue'
-//                     value={dunno.venue}
-//                 />
-//                 <input
-//                     className='textInput'
-//                     type='text'
-//                     name='ruleset'
-//                     value={dunno.ruleset}
-//                 />
-//                 <input
-//                     className='numberInput'
-//                     type='number'
-//                     name='pot'
-//                     onChange={e => dunno.potChangeHandler(e)}
-//                 />
-//                 <DatePicker onChange={dunno.dateChangeHandler} />  
-//                 <Button htmlType='submit'>Submit</Button>
-//             </form>
-//         </div>
-//     )
-
-// }

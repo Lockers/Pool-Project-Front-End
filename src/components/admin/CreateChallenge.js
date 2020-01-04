@@ -10,7 +10,7 @@ const CreateChallenge = (props) => {
     return (
         <div>
             <ChallengeForm challenge={challenge} />
-            <AmendChallenges resultHandler={props.resultHandler}/>
+            <AmendChallenges resultHandler={props.resultHandler} players={props.players}/>
         </div>
     )
 }
