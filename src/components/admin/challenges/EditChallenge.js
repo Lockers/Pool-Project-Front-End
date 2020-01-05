@@ -13,10 +13,10 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Styled from 'styled-components';
-import { Loader } from '../../misc/Loader';
-import { venues, rulesets } from '../../components/data/GeneralData';
+import { Loader } from '../../../misc/Loader';
+import { venues, rulesets } from '../../data/GeneralData';
 import Button from '@material-ui/core/Button';
-import { useUpdateRequest } from '../../helpers/UpdateHelper';
+import { useUpdateRequest } from '../../../helpers/UpdateHelper';
 
 const Div = Styled.div`
      border: 1px solid black;

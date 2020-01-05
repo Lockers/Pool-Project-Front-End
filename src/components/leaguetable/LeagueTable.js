@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 });
 
 
-export const LeagueTableTest = () => {
+export const LeagueTable = () => {
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(50);
@@ -54,15 +54,26 @@ export const LeagueTableTest = () => {
     const rows = []
 
     players.data.map(player => {
-        
-        const hi = new Date(Date.parse(player.results.slice(-1)[0].date)).toString();
+        if (player.results.length > 0) {
+            const hi = new Date(Date.parse(player.results.slice(-1)[0].date)).toString();
+            const lol = Date.parse(hi)
+            const newDate = Date.now();
+
+            const daysLeft = newDate - lol
+            const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
+            const days = Math.round(sum)
+            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.totalPrizeMoney, player.challengable, days))
+          
+        }
+        const hi = new Date(Date.parse(player.createdAt.slice(-1)[0].date)).toString();
         const lol = Date.parse(hi)
         const newDate = Date.now();
-        
+
         const daysLeft = newDate - lol
         const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
         const days = Math.round(sum)
-        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.totalPrizeMoney, player.challengable, days ))
+        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.totalPrizeMoney, player.challengable, days))
+        
     })
 
     const handleChangePage = (event, newPage) => {

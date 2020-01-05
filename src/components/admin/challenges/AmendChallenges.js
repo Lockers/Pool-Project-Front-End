@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetRequest } from '../../helpers/GetRequest';
+import { useGetRequest } from '../../../helpers/GetRequest';
 import { Spin, Button } from 'antd';
 import Styled from 'styled-components';
 import Moment from 'react-moment';

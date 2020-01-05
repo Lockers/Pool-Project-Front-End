@@ -10,9 +10,12 @@ import Styled from 'styled-components';
 import { useDeleteRequest } from '../../../helpers/DeleteRequest';
 
 const DeleteDiv = Styled.div`
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
     padding: 1rem;
-    margin-bottom: 1rem;
+    max-width: 600px;
+    margin: 1rem auto;
 `
 
 const BootstrapInput = withStyles(theme => ({

@@ -4,10 +4,15 @@ import { DeletePlayer } from './players/DeletePlayer';
 import { useGetRequest } from '../../helpers/GetRequest';
 import { AddResults } from './results/AddResults';
 import { Loader } from '../../misc/Loader';
-import CreateChallenge from './CreateChallenge';
+import CreateChallenge from './challenges/CreateChallenge';
+import { EditChallenge } from './challenges/EditChallenge';
 
 export const Admin = () => {
     const players = useGetRequest('players')
+    const challenge = useGetRequest('challenges')
+
+
+
     if (!players) {
         return <Loader />
     }
@@ -19,7 +24,7 @@ export const Admin = () => {
             <DeletePlayer players={players} />
             <AddResults players={players} />
             <CreateChallenge players={players} />
-
+            <EditChallenge challenge={challenge}/>
         </div>
     )
 }

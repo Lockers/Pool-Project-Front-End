@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Spin, Button } from 'antd';
-import { usePostRequest } from '../../helpers/PostRequest';
+import { usePostRequest } from '../../../helpers/PostRequest';
 
 export const SubmitChallenge = (props) => {
 

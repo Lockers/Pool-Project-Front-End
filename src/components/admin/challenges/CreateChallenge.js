@@ -1,5 +1,5 @@
 import React from 'react';
-import { useChallengeCreator } from '../../helpers/ChallengeHelper';
+import { useChallengeCreator } from '../../../helpers/ChallengeHelper';
 import { ChallengeForm } from './ChallengeForm';
 import { AmendChallenges } from './AmendChallenges'
 

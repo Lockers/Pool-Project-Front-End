@@ -1,11 +1,6 @@
 import 'date-fns';
-import React, { useState } from 'react';
+import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-} from '@material-ui/pickers';
-
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,12 +11,23 @@ import Styled from 'styled-components';
 import { Loader } from '../../../misc/Loader';
 import { venues, rulesets } from '../../data/GeneralData';
 import { Button } from '@material-ui/core';
-import { usePostRequest } from '../../../helpers/PostRequest';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+import { useResultHelper } from '../../../helpers/resultHelpers/AddResultHelper';
+
 
 const AddResult = Styled.div`
-     border: 1px solid black;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: 1px solid black;
     padding: 1rem;
-    margin-bottom: 1rem;
+    max-width: 600px;
+    margin: 1rem auto;
 `
 
 const useStyles = makeStyles(theme => ({
@@ -35,60 +41,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const AddResults = (props) => {
-    const [fire, setFire] = useState(false)
+    const result = useResultHelper()
     const classes = useStyles();
-    const [result, setResult] = useState({
-        challenger: '',
-        challengerScore: null,
-        challenged: '',
-        challengedScore: null,
-        venue: '',
-        ruleset: '',
-        pot: null,
-        date: new Date('2014-08-18T21:11:54')
-    });
-
-    usePostRequest('results', result, fire)
-
-    const handleDateChange = date => {
-        setResult({ ...result, date: date });
-        console.log(result)
-    };
-
-    const handleChallengerChange = event => {
-        setResult({ ...result, challenger: event.target.value });
-    };
-
-    const handleChallengedChange = event => {
-        setResult({ ...result, challenged: event.target.value });
-    };
-
-    const handleChallengerScoreChangeHandler = event => {
-        setResult({ ...result, challengerScore: event.target.value });
-    };
-
-    const handleChallengedScoreChangeHandler = event => {
-        setResult({ ...result, challengedScore: event.target.value });
-    };
-
-    const handleVenueChange = event => {
-        setResult({ ...result, venue: event.target.value });
-    };
-
-    const handleRuleSetChange = event => {
-        setResult({ ...result, ruleset: event.target.value });
-    };
-
-    const handlePotChange = event => {
-        setResult({ ...result, pot: event.target.value });
-    };
-
-    const submitResult = event => {
-        event.preventDefault()
-        setFire(true)
-        console.log(result)
-    };
-
+  
     if (!props.players) {
         return <Loader />
     }
@@ -96,14 +51,14 @@ export const AddResults = (props) => {
     return (
         <AddResult>
             <h1>Add Historic Result</h1>
-            <form onSubmit={submitResult}>
+            <form onSubmit={result.submitResult}>
                 <FormControl className={classes.formControl}>
                     <InputLabel id="frames1">Challenger</InputLabel>
                     <Select
                         labelId="challengerSelect"
-                        id="demo-simple-select"
-                        value={result.challenger}
-                        onChange={handleChallengerChange}
+                        id="challengerSelect"
+                        value={result.result.challenger}
+                        onChange={result.handleChallengerChange}
                     >
                         {props.players.data.map(player => <MenuItem key={player._id} value={player.name}>{player.name}</MenuItem>)}
                     </Select>
@@ -111,7 +66,7 @@ export const AddResults = (props) => {
                         id="challengerFrames"
                         placeholder="Frames"
                         type="number"
-                        onChange={handleChallengerScoreChangeHandler}
+                        onChange={result.result.handleChallengerScoreChangeHandler}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -121,9 +76,9 @@ export const AddResults = (props) => {
                     <InputLabel id="frames2">Challenged</InputLabel>
                     <Select
                         labelId="challengedSelect"
-                        id="demo-simple-select"
-                        value={result.challenged}
-                        onChange={handleChallengedChange}
+                        id="frames2"
+                        value={result.result.challenged}
+                        onChange={result.handleChallengedChange}
                     >
                         {props.players.data.map(player => <MenuItem key={player._id} value={player.name}>{player.name}</MenuItem>)}
                     </Select>
@@ -131,7 +86,7 @@ export const AddResults = (props) => {
                         id="Frames2"
                         placeholder="Frames"
                         type="number"
-                        onChange={handleChallengedScoreChangeHandler}
+                        onChange={result.handleChallengedScoreChangeHandler}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -140,10 +95,10 @@ export const AddResults = (props) => {
                 <FormControl className={classes.formControl}>
                     <InputLabel id="venueChange">Rule Set</InputLabel>
                     <Select
-                        labelId="venueCHange"
+                        labelId="venueChange"
                         id="venueChange"
-                        value={result.venue}
-                        onChange={handleVenueChange}
+                        value={result.result.venue}
+                        onChange={result.handleVenueChange}
                     >
                         {rulesets.map((item, index) => <MenuItem key={index} value={item}>{item}</MenuItem>)}
                     </Select>
@@ -153,8 +108,8 @@ export const AddResults = (props) => {
                     <Select
                         labelId="ruleChange"
                         id="ruleChange"
-                        value={result.ruleset}
-                        onChange={handleRuleSetChange}
+                        value={result.result.ruleset}
+                        onChange={result.handleRuleSetChange}
                     >
                         {venues.map((venue, index) => <MenuItem key={index} value={venue}>{venue}</MenuItem>)}
                     </Select>
@@ -162,7 +117,7 @@ export const AddResults = (props) => {
                         id="pot"
                         label="Pot"
                         type="number"
-                        onChange={handlePotChange}
+                        onChange={result.handlePotChange}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -174,10 +129,10 @@ export const AddResults = (props) => {
                         variant="inline"
                         format="MM/dd/yyyy"
                         margin="normal"
-                        id="date-picker-inline"
-                        label="Date picker inline"
-                        value={result.date}
-                        onChange={handleDateChange}
+                        id="resultDate"
+                        label="Result Date"
+                        value={result.result.date}
+                        onChange={result.handleDateChange}
                         KeyboardButtonProps={{
                             'aria-label': 'change date',
                         }}
