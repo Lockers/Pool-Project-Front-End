@@ -27,7 +27,14 @@ body {
 
 
 form {
-  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 1rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  
 }
 
 .matches {
@@ -59,4 +66,3 @@ input {
 span {
   margin: 0.3rem;
 }
-

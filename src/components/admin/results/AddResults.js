@@ -30,6 +30,16 @@ const AddResult = Styled.div`
     margin: 1rem auto;
 `
 
+const Form = Styled.form`
+     display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 1rem auto;
+`
+
 const useStyles = makeStyles(theme => ({
     formControl: {
         margin: theme.spacing(1),
@@ -51,7 +61,7 @@ export const AddResults = (props) => {
     return (
         <AddResult>
             <h1>Add Historic Result</h1>
-            <form onSubmit={result.submitResult}>
+            <Form onSubmit={result.submitResult}>
                 <FormControl className={classes.formControl}>
                     <InputLabel id="frames1">Challenger</InputLabel>
                     <Select
@@ -115,7 +125,7 @@ export const AddResults = (props) => {
                     </Select>
                     <TextField
                         id="pot"
-                        label="Pot"
+                        placeholder="Pot"
                         type="number"
                         onChange={result.handlePotChange}
                         InputLabelProps={{
@@ -139,7 +149,7 @@ export const AddResults = (props) => {
                     />
                 </MuiPickersUtilsProvider>
                 <Button variant='contained' color='primary' type='submit'>Submit</Button>
-            </form>
+            </Form>
         </AddResult>
     );
 }

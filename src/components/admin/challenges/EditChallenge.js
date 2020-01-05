@@ -18,10 +18,23 @@ import { venues, rulesets } from '../../data/GeneralData';
 import Button from '@material-ui/core/Button';
 import { useUpdateRequest } from '../../../helpers/UpdateHelper';
 
-const Div = Styled.div`
-     border: 1px solid black;
+const EditChall = Styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
     padding: 1rem;
-    margin: 1rem 0rem 1rem 0rem;
+    max-width: 600px;
+    margin: 1rem auto;
+`
+const Form = Styled.form`
+     display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 1rem auto;
 `
 
 const useStyles = makeStyles(theme => ({
@@ -75,10 +88,9 @@ export const EditChallenge = (props) => {
         return <Loader />
     }
     return (
-        <Div>
-            <div>
-                <h1>Edit Challenge</h1>
-                <form onSubmit={handleSubmit}>
+        <EditChall>
+            <h1>Edit Challenge</h1>
+                <Form onSubmit={handleSubmit}>
                     <TextField
                         required id="challenger"
                         label="challenger"
@@ -93,16 +105,16 @@ export const EditChallenge = (props) => {
                         value={newChallenge.challenged}
                     />
                     <TextField
-                        required id="challenged"
-                        label="challenged"
+                        required id="pot"
+                        label="Pot"
                         type="text"
                         onChange={handlePot}
                     />
                 <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Ruleset</InputLabel>
+                    <InputLabel id="editRuleset">Ruleset</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                            id="demo-simple-select"
+                            labelId="editRuleset"
+                            id="editRuleset"
                             label="Change Ruleset To"
                             onChange={handleRuleSetChange}
                     >
@@ -110,10 +122,10 @@ export const EditChallenge = (props) => {
                     </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Venue</InputLabel>
+                    <InputLabel id="editVenue">Venue</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="editVenue"
+                        id="editVenue"
                         onChange={handleVenueChange}
                     >
                         {venues.map((venue, index) => <MenuItem key={index} value={venue}>{venue}</MenuItem>)}
@@ -125,8 +137,8 @@ export const EditChallenge = (props) => {
                             variant="inline"
                             format="MM/dd/yyyy"
                             margin="normal"
-                            id="date-picker-inline"
-                            label="Date picker inline"
+                            id="EditChallengePicker"
+                            label="Edit Date"
                             value={newChallenge.date}
                             onChange={handleDateChange}
                             KeyboardButtonProps={{
@@ -135,8 +147,7 @@ export const EditChallenge = (props) => {
                         />
                     </MuiPickersUtilsProvider>
                     <Button variant='contained' color='primary' type='submit'>Submit</Button>
-                </form>
-            </div>
-        </Div>
+                </Form>
+            </EditChall>
     )
 }

@@ -4,7 +4,7 @@ import { DeletePlayer } from './players/DeletePlayer';
 import { useGetRequest } from '../../helpers/GetRequest';
 import { AddResults } from './results/AddResults';
 import { Loader } from '../../misc/Loader';
-import CreateChallenge from './challenges/CreateChallenge';
+import { AddChallenge } from './challenges/AddChallenge';
 import { EditChallenge } from './challenges/EditChallenge';
 
 export const Admin = () => {
@@ -23,7 +23,7 @@ export const Admin = () => {
             <AddPlayer />
             <DeletePlayer players={players} />
             <AddResults players={players} />
-            <CreateChallenge players={players} />
+            <AddChallenge players={players} />
             <EditChallenge challenge={challenge}/>
         </div>
     )
