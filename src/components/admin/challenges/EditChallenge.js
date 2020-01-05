@@ -7,16 +7,13 @@ import {
 } from '@material-ui/pickers';
 
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Styled from 'styled-components';
 import { Loader } from '../../../misc/Loader';
-import { venues, rulesets } from '../../data/GeneralData';
 import Button from '@material-ui/core/Button';
 import { useUpdateRequest } from '../../../helpers/UpdateHelper';
+import { ViewChallenges } from '../../challenges/ViewChallenges';
+import { SubmitChallenge } from './SubmitChallenge';
 
 const EditChall = Styled.div`
     display: flex;
@@ -55,7 +52,6 @@ export const EditChallenge = (props) => {
     const [newChallenge, setNewChallenge] = useState(props)
 
     useUpdateRequest(`challenges/${id}`, newChallenge, fire)
-    const classes = useStyles();
     
     const handleDateChange = date => {
         setNewChallenge({ ...newChallenge, date: date });
@@ -83,24 +79,27 @@ export const EditChallenge = (props) => {
         setId(newChallenge._id)
         setFire(true)
     }
+    const handleClick = (e) => {
+        setNewChallenge(e)
+    }
 
     if (!props) {
         return <Loader />
     }
     return (
+        <div>
+        <ViewChallenges handleClick={handleClick}/>
         <EditChall>
             <h1>Edit Challenge</h1>
                 <Form onSubmit={handleSubmit}>
                     <TextField
                         required id="challenger"
-                        label="challenger"
                         type="text"
                         value={newChallenge.challenger}
 
                     />
                     <TextField
                         required id="challenged"
-                        label="challenged"
                         type="text"
                         value={newChallenge.challenged}
                     />
@@ -108,29 +107,23 @@ export const EditChallenge = (props) => {
                         required id="pot"
                         label="Pot"
                         type="text"
+                        value={newChallenge.pot}
                         onChange={handlePot}
                     />
-                <FormControl className={classes.formControl}>
-                    <InputLabel id="editRuleset">Ruleset</InputLabel>
-                    <Select
-                            labelId="editRuleset"
-                            id="editRuleset"
-                            label="Change Ruleset To"
-                            onChange={handleRuleSetChange}
-                    >
-                        {rulesets.map((ruleset, index) => <MenuItem key={index} value={ruleset}>{ruleset}</MenuItem>)}
-                    </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                    <InputLabel id="editVenue">Venue</InputLabel>
-                    <Select
-                        labelId="editVenue"
-                        id="editVenue"
+                    <TextField
+                        required id="pot"
+                        label="Venue"
+                        type="text"
+                        value={newChallenge.venue}
                         onChange={handleVenueChange}
-                    >
-                        {venues.map((venue, index) => <MenuItem key={index} value={venue}>{venue}</MenuItem>)}
-                    </Select>
-                </FormControl>
+                    />
+                    <TextField
+                        required id="pot"
+                        label="Ruleset"
+                        type="text"
+                        value={newChallenge.ruleset}
+                        onChange={handleRuleSetChange}
+                    />
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
                             disableToolbar
@@ -149,5 +142,6 @@ export const EditChallenge = (props) => {
                     <Button variant='contained' color='primary' type='submit'>Submit</Button>
                 </Form>
             </EditChall>
+        </div>
     )
 }

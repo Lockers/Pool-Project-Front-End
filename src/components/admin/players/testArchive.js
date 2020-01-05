@@ -22,6 +22,7 @@ export const TestArchive = (props) => {
         delete e.createdAt
         delete e.updatedAt
         setPlayer(e)
+        console.log(e)
         setFire(true)
     }
 

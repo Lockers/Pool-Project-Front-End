@@ -5,8 +5,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Moment from 'react-moment';
-import { useGetRequest } from '../../helpers/GetRequest';
-import { Loader } from '../../misc/Loader';
+import { useGetRequest } from '../../../helpers/GetRequest';
+import { Loader } from '../../../misc/Loader';
 import Styled from 'styled-components';
 
 const Challenges = Styled.div`
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export const ViewChallenges = (props) => {
+export const AdminChallenges = (props) => {
     const challenges = useGetRequest('challenges')
     const classes = useStyles();
 
@@ -37,7 +37,7 @@ export const ViewChallenges = (props) => {
     return (
         
         <Challenges>
-            <h1>Challenges</h1>
+            <h1>Admin Challenges</h1>
             {challenges.data.map(challenge => {
                 return (
                     <List component="nav" className={classes.root} aria-label="mailbox folders" key={challenge._id}>
@@ -47,10 +47,11 @@ export const ViewChallenges = (props) => {
                                 Venue: {challenge.venue} Rule set :{challenge.ruleset} <br />
                                 Pot: {challenge.pot} Date {challenge.date ? <Moment format="DD/MM/YYYY">{challenge.date}</Moment> : 'No Date'}
                             </ListItemText>
-                            </ListItem>
-                         <Divider />
+                        </ListItem>
+                        <Divider />
                     </List>
                 )
             })}
         </Challenges>
-    )}
+    )
+}
