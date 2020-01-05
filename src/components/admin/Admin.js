@@ -18,8 +18,8 @@ export const Admin = () => {
             <AddPlayer />
             <DeletePlayer players={players} />
             <AddResults players={players} />
-            <CreateChallenge players={players}/>
-            
+            <CreateChallenge players={players} />
+
         </div>
-        )
+    )
 }

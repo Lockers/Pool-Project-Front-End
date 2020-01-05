@@ -23,8 +23,12 @@ export const AmendChallenges = (props) => {
 
     const handleChallengeClick = (e) => {
         setSingleChallenge(e)
-        console.log(e)
     }
+
+    const resultHandler = (e) => {
+        setSingleChallenge(e)   
+    }
+    
     return (
         
         <div>
@@ -41,7 +45,7 @@ export const AmendChallenges = (props) => {
                         <span><Moment format="DD/MM/YYYY">{challenge.date}</Moment></span>
                     </Span>
                     
-                    <Button onClick={e => props.resultHandler(challenge)}>Result</Button>
+                    <Button onClick={e => resultHandler(challenge)}>Result</Button>
                     <Button onClick={e => handleChallengeClick(challenge)}>Edit</Button>
                 </Div>
             })}

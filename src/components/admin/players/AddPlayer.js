@@ -49,12 +49,12 @@ export const AddPlayer = () => {
             <AddDiv>
                 <h1>Add Player</h1>
                 <TextField
-                    required id="standard-required"
+                    required id="playerName"
                     label="Name" placeholder="Name"
                     onChange={nameChangeHandler}
                 />
                 <TextField
-                    required id="standard-number"
+                    required id="leaguePosition"
                     label="Starting League Position"
                     type="number" placeholder="Starting League Position"
                     onChange={leaguePositionChangeHandler}

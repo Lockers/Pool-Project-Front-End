@@ -17,20 +17,20 @@ export const FullPlayerInfo = (props) => {
             <Spin />
         )
     }
-
+    
     return (
         <div>
         <Div>
-            <p>Name: {props.player[0].name}</p>
-            <p>Played: {props.player[0].played}</p>
-            <p>Won: {props.player[0].won}</p>
-            <p>Total Prize Money Won: £{props.player[0].totalPrizeMoney}</p>
+            <p>Name: {props.player.name}</p>
+            <p>Played: {props.player.played}</p>
+            <p>Won: {props.player.won}</p>
+            <p>Total Prize Money Won: £{props.player.totalPrizeMoney}</p>
             </Div>
             <h1>Previous results</h1>
-            {props.player[0].results.map((result, index) => {
+            {props.player.results.map((result, index) => {
                 return (
-                    <ResultsDiv>
-                    <Descriptions key={index} bordered={true} size='small' layout='vertical' column='xs'>
+                    <ResultsDiv key= { index }>
+                    <Descriptions bordered={true} size='small' layout='vertical' column='xs'>
                         <Descriptions.Item label="Venue">{result.venue}</Descriptions.Item>
                         <Descriptions.Item label="Date"><Moment format="DD/MM/YYYY">{result.date}</Moment></Descriptions.Item>
                         <Descriptions.Item label="Ruleset">{result.ruleset}</Descriptions.Item>

@@ -28,7 +28,7 @@ export const ViewChallenges = () => {
         <div>
             {challenges.data.map(challenge => {
                 return (
-                    <List component="nav" className={classes.root} aria-label="mailbox folders">
+                    <List component="nav" className={classes.root} aria-label="mailbox folders" key={challenge._id}>
                         <ListItem button>
                             <ListItemText>
                                 {challenge.challenger} v {challenge.challenged} <br />

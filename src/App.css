@@ -1,12 +1,12 @@
 @import '~antd/dist/antd.css';
 
 body {
-  max-width: 500px;
+  max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
 }
 
@@ -19,7 +19,7 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #09d3ac;

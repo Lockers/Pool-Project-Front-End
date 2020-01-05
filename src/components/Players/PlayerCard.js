@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
+import { FullPlayerInfo } from './FullPlayerInfo';
+
 
 const useStyles = makeStyles({
     card: {
@@ -25,11 +26,18 @@ const useStyles = makeStyles({
     },
 });
 
+
 export const PlayerCard = (props) => {
+    const [player, setPlayer] = useState()
+    const handleClick = (e) => {
+        setPlayer(e)
+    }
+
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
 
     return (
+        <div>
+        <FullPlayerInfo player={player} />
         <Card className={classes.card} variant="outlined">
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -46,8 +54,9 @@ export const PlayerCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Link to={`/players/${props.player._id}`}><Button variant='contained' color='primary' onClick={(e) => props.handleClick(props.player._id)}>More Info</Button></Link>
+                <Button variant='contained' color='primary' onClick={(e) => handleClick(props.player)}>More Info</Button>
             </CardActions>
         </Card>
+        </div>
     );
 }

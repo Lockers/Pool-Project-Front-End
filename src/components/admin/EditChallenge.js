@@ -1,5 +1,5 @@
 import 'date-fns';
-import React from 'react';
+import React, {useState} from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -15,12 +15,13 @@ import TextField from '@material-ui/core/TextField';
 import Styled from 'styled-components';
 import { Loader } from '../../misc/Loader';
 import { venues, rulesets } from '../../components/data/GeneralData';
-// import Button from 
+import Button from '@material-ui/core/Button';
+import { useUpdateRequest } from '../../helpers/UpdateHelper';
 
 const Div = Styled.div`
      border: 1px solid black;
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0rem 1rem 0rem;
 `
 
 const useStyles = makeStyles(theme => ({
@@ -36,87 +37,104 @@ const useStyles = makeStyles(theme => ({
 
 export const EditChallenge = (props) => {
 
+    const [fire, setFire] = useState(false)
+    const [id, setId] = useState('3')
+    const [newChallenge, setNewChallenge] = useState(props)
+
+    useUpdateRequest(`challenges/${id}`, newChallenge, fire)
     const classes = useStyles();
-    const [challenger, setChallenger] = React.useState('');
-    const [challenged, setChallenged] = React.useState('');
-    const [venue, setVenue] = React.useState('')
-    const [ruleset, setRuleset] = React.useState('')
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-
+    
     const handleDateChange = date => {
-        setSelectedDate(date);
+        setNewChallenge({ ...newChallenge, date: date });
     };
 
-    const handleChallengerChange = event => {
-        setChallenger(event.target.value);
+    const handleVenueChange = event => {
+        event.preventDefault()
+        setNewChallenge({ ...newChallenge, venue: event.target.value });
+        
     };
 
-    const handleChallengedChange = event => {
-        setChallenged(event.target.value);
+    const handleRuleSetChange = event => {
+        event.preventDefault()
+        setNewChallenge({ ...newChallenge, ruleset: event.target.value });
+        
     };
-    console.log(props)
-    if (!props.singleChallenge) {
+
+    const handlePot = event => {
+        event.preventDefault()
+        setNewChallenge({ ...newChallenge, pot: event.target.value });
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        setId(newChallenge._id)
+        setFire(true)
+    }
+
+    if (!props) {
         return <Loader />
     }
     return (
         <Div>
             <div>
                 <h1>Edit Challenge</h1>
+                <form onSubmit={handleSubmit}>
+                    <TextField
+                        required id="challenger"
+                        label="challenger"
+                        type="text"
+                        value={newChallenge.challenger}
+
+                    />
+                    <TextField
+                        required id="challenged"
+                        label="challenged"
+                        type="text"
+                        value={newChallenge.challenged}
+                    />
+                    <TextField
+                        required id="challenged"
+                        label="challenged"
+                        type="text"
+                        onChange={handlePot}
+                    />
                 <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Challenger</InputLabel>
+                    <InputLabel id="demo-simple-select-label">Ruleset</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Change Ruleset To"
+                            onChange={handleRuleSetChange}
+                    >
+                        {rulesets.map((ruleset, index) => <MenuItem key={index} value={ruleset}>{ruleset}</MenuItem>)}
+                    </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">Venue</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={challenger}
-                        onChange={handleChallengerChange}
+                        onChange={handleVenueChange}
                     >
-                        {props.players.data.map(player => <MenuItem value={player.name}>{player.name}</MenuItem>)}
+                        {venues.map((venue, index) => <MenuItem key={index} value={venue}>{venue}</MenuItem>)}
                     </Select>
-                    <TextField
-                        id="standard-number"
-                        label="Frames"
-                        type="number"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
                 </FormControl>
-
-                <form onSubmit={e => props.challenge.submitHandler(e)}>
-                    <input
-                        className='textInput'
-                        type='text'
-                        name='challenger'
-                        value={props.singleChallenge.challenger}
-                    />
-                    V
-            <input
-                        className='textInput'
-                        type='text'
-                        name='challenged'
-                        value={props.singleChallenge.challenged}
-                    />
-                    <input
-                        className='textInput'
-                        type='text'
-                        name='venue'
-                        value={props.singleChallenge.venue}
-
-                    />
-                    <input
-                        className='textInput'
-                        type='text'
-                        name='ruleset'
-                        value={props.singleChallenge.ruleset}
-                    />
-                    <input
-                        className='numberInput'
-                        type='number'
-                        name='pot'
-                        onChange={props.singleChallenge.pot}
-                    />
-                    {/* <DatePicker onChange={props.challenge.dateChangeHandler} /> */}
-                    {/* <Button htmlType='submit'>Submit</Button> */}
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <KeyboardDatePicker
+                            disableToolbar
+                            variant="inline"
+                            format="MM/dd/yyyy"
+                            margin="normal"
+                            id="date-picker-inline"
+                            label="Date picker inline"
+                            value={newChallenge.date}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+                    </MuiPickersUtilsProvider>
+                    <Button variant='contained' color='primary' type='submit'>Submit</Button>
                 </form>
             </div>
         </Div>

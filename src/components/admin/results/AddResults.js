@@ -16,6 +16,7 @@ import Styled from 'styled-components';
 import { Loader } from '../../../misc/Loader';
 import { venues, rulesets } from '../../data/GeneralData';
 import { Button } from '@material-ui/core';
+import { usePostRequest } from '../../../helpers/PostRequest';
 
 const AddResult = Styled.div`
      border: 1px solid black;
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const AddResults = (props) => {
-
+    const [fire, setFire] = useState(false)
     const classes = useStyles();
     const [result, setResult] = useState({
         challenger: '',
@@ -46,6 +47,8 @@ export const AddResults = (props) => {
         pot: null,
         date: new Date('2014-08-18T21:11:54')
     });
+
+    usePostRequest('results', result, fire)
 
     const handleDateChange = date => {
         setResult({ ...result, date: date });
@@ -80,9 +83,11 @@ export const AddResults = (props) => {
         setResult({ ...result, pot: event.target.value });
     };
 
-    
-
-    
+    const submitResult = event => {
+        event.preventDefault()
+        setFire(true)
+        console.log(result)
+    };
 
     if (!props.players) {
         return <Loader />
@@ -91,11 +96,11 @@ export const AddResults = (props) => {
     return (
         <AddResult>
             <h1>Add Historic Result</h1>
-            <form>
+            <form onSubmit={submitResult}>
                 <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Challenger</InputLabel>
+                    <InputLabel id="frames1">Challenger</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
+                        labelId="challengerSelect"
                         id="demo-simple-select"
                         value={result.challenger}
                         onChange={handleChallengerChange}
@@ -103,8 +108,8 @@ export const AddResults = (props) => {
                         {props.players.data.map(player => <MenuItem key={player._id} value={player.name}>{player.name}</MenuItem>)}
                     </Select>
                     <TextField
-                        id="standard-number"
-                        label="Frames"
+                        id="challengerFrames"
+                        placeholder="Frames"
                         type="number"
                         onChange={handleChallengerScoreChangeHandler}
                         InputLabelProps={{
@@ -113,9 +118,9 @@ export const AddResults = (props) => {
                     />
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Challenged</InputLabel>
+                    <InputLabel id="frames2">Challenged</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
+                        labelId="challengedSelect"
                         id="demo-simple-select"
                         value={result.challenged}
                         onChange={handleChallengedChange}
@@ -123,8 +128,8 @@ export const AddResults = (props) => {
                         {props.players.data.map(player => <MenuItem key={player._id} value={player.name}>{player.name}</MenuItem>)}
                     </Select>
                     <TextField
-                        id="standard-number"
-                        label="Frames"
+                        id="Frames2"
+                        placeholder="Frames"
                         type="number"
                         onChange={handleChallengedScoreChangeHandler}
                         InputLabelProps={{
@@ -133,10 +138,10 @@ export const AddResults = (props) => {
                     />
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Rule Set</InputLabel>
+                    <InputLabel id="venueChange">Rule Set</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="venueCHange"
+                        id="venueChange"
                         value={result.venue}
                         onChange={handleVenueChange}
                     >
@@ -144,17 +149,17 @@ export const AddResults = (props) => {
                     </Select>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Venue</InputLabel>
+                    <InputLabel id="ruleChange">Venue</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="ruleChange"
+                        id="ruleChange"
                         value={result.ruleset}
                         onChange={handleRuleSetChange}
                     >
                         {venues.map((venue, index) => <MenuItem key={index} value={venue}>{venue}</MenuItem>)}
                     </Select>
                     <TextField
-                        id="standard-number"
+                        id="pot"
                         label="Pot"
                         type="number"
                         onChange={handlePotChange}
@@ -171,14 +176,14 @@ export const AddResults = (props) => {
                         margin="normal"
                         id="date-picker-inline"
                         label="Date picker inline"
-                        value={result.selectedDate}
+                        value={result.date}
                         onChange={handleDateChange}
                         KeyboardButtonProps={{
                             'aria-label': 'change date',
                         }}
                     />
                 </MuiPickersUtilsProvider>
-                <Button>Submit</Button>
+                <Button variant='contained' color='primary' type='submit'>Submit</Button>
             </form>
         </AddResult>
     );
