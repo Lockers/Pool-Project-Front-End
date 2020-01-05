@@ -2,6 +2,7 @@ import React from 'react';
 import { Spin, Descriptions } from 'antd';
 import Moment from 'react-moment';
 import Styled from 'styled-components';
+import Button from '@material-ui/core/Button';
 
 const ResultsDiv = Styled.div`
 margin: 1rem;
@@ -11,6 +12,10 @@ const Div = Styled.div`
 `
 
 export const FullPlayerInfo = (props) => {
+
+    function handleClick(e) {
+        window.location.reload()
+    }
     
     if (!props.player) {
         return (
@@ -36,10 +41,12 @@ export const FullPlayerInfo = (props) => {
                         <Descriptions.Item label="Ruleset">{result.ruleset}</Descriptions.Item>
                         <Descriptions.Item label="Pot">£{result.pot}</Descriptions.Item>
                         <Descriptions.Item label="Result">{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged}</Descriptions.Item>
-                    </Descriptions>
+                        </Descriptions>
                     </ResultsDiv>
+                    
                 )
             })}
+            <Button variant="contained" color="primary" onClick={handleClick}>Close</Button>
         </div>
     )
 }

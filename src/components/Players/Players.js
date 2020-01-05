@@ -1,6 +1,8 @@
 import React  from 'react';
 import { PlayerCard } from './PlayerCard';
 import Styled from 'styled-components';
+import { Loader } from '../../misc/Loader';
+import { useGetRequest } from '../../helpers/GetRequest';
 
 const Div = Styled.div`
     display: flex;
@@ -11,12 +13,17 @@ const Div = Styled.div`
     margin: 0 auto;
 `
 
-export const Players = (props) => {
+export const Players = () => {
+    const players = useGetRequest('players')
+
+    if (!players) {
+        return <Loader />
+    }
     
     return (
         <Div className='PlayerCardContainer'>
-            {props.players.data.map(card => {
-                return <PlayerCard key={card._id} player={card} handleClick={props.handleClick} />
+            {players.data.map(card => {
+                return <PlayerCard key={card._id} player={card} />
             })}
         </Div>
     )
