@@ -15,7 +15,7 @@ const Div = Styled.div`
 
 const Img = Styled.img`
     display: flex;
-    width: 450px;
+    width: 400px;
     margin: 0 auto;
 `
 
