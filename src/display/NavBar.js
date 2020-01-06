@@ -11,14 +11,14 @@ const Div = Styled.div`
   display: flex;
   justify-self: center;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 420px;
   margin-top: 1rem;
   margin-bottom: 1rem;
 `
 
 const Img = Styled.img`
     display: flex;
-    width: 400px;
+    width: 420px;
     margin: 0 auto;
 `
 
