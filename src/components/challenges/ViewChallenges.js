@@ -17,6 +17,7 @@ const Challenges = Styled.div`
     padding: 1rem;
     max-width: 400px;
     margin: 1rem auto;
+    text-align: center;
 
      @media(min-width: 600px) {
      width: 600px;
@@ -47,10 +48,12 @@ export const ViewChallenges = (props) => {
                 return (
                     <List component="nav" className={classes.root} aria-label="mailbox folders" key={challenge._id}>
                         <ListItem button onClick={e => props.handleClick(challenge)}>
-                            <ListItemText>
+                            <ListItemText style={{ textAlign: 'center' , lineHeight: '3'}}>
                                 {challenge.challenger} v {challenge.challenged} <br />
-                                Venue: {challenge.venue} Rule set :{challenge.ruleset} <br />
-                                Pot: {challenge.pot} Date {challenge.date ? <Moment format="DD/MM/YYYY">{challenge.date}</Moment> : 'No Date'}
+                                Venue: {challenge.venue} <br />
+                                Rule set :{challenge.ruleset} <br />
+                                Pot: {challenge.pot}<br />
+                                Date: {challenge.date ? <Moment format="DD/MM/YYYY">{challenge.date}</Moment> : 'No Date'}
                             </ListItemText>
                             </ListItem>
                          <Divider />
