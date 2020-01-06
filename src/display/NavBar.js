@@ -29,6 +29,7 @@ const Img = Styled.img`
     display: flex;
     width: 350px;
     margin: 0 auto;
+    height: 150px;
 `
 
 const StyledMenu = withStyles({
