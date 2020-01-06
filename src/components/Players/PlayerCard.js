@@ -11,6 +11,7 @@ import Styled from 'styled-components';
 const Player = Styled.div`
     width: 300px;
     margin: 0 auto;
+    margin-bottom: 5rem;
      @media(min-width: 600px) {
   
     max-width: 800px;
@@ -24,7 +25,8 @@ const useStyles = makeStyles({
         margin: '0 auto',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: '5rem',
         
     },
 });

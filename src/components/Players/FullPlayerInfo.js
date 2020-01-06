@@ -27,7 +27,7 @@ export const FullPlayerInfo = (props) => {
             <h1>Previous results</h1>
             {props.player.results.map((result, index) => {
                 return (
-                    <div key={index}>
+                    <div style={{marginBottom: '1rem'}}key={index}>
                     <Descriptions bordered={true} size='small' layout='vertical' column='xs'>
                         <Descriptions.Item label="Venue">{result.venue}</Descriptions.Item>
                         <Descriptions.Item label="Date"><Moment format="DD/MM/YYYY">{result.date}</Moment></Descriptions.Item>
