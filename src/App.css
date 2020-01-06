@@ -1,9 +1,16 @@
 @import '~antd/dist/antd.css';
 
 body {
-  max-width: 400px;
+  max-width: 375px;
   margin: 0 auto;
   text-align: center;
+
+}
+
+@media(min-width: 600px) {
+  body{
+    max-width: 800px;
+  }
 }
 
 form {
@@ -14,7 +21,7 @@ form {
   padding: 1rem;
   max-width: 600px;
   margin: 1rem auto;
-  
+
 }
 
 input {

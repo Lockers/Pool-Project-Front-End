@@ -9,21 +9,23 @@ import { FullPlayerInfo } from './FullPlayerInfo';
 import Styled from 'styled-components';
 
 const Player = Styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
+     @media(min-width: 600px) {
+  
+    max-width: 800px;
+  
+}
 `
 
 const useStyles = makeStyles({
     card: {
         maxWidth: 400,
-        margin: '10px 0 10px 0',
+        margin: '0 auto',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
+        
     },
 });
 

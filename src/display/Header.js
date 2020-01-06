@@ -16,6 +16,11 @@ const Container = Styled.div`
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
+     @media(min-width: 600px) {
+  
+    max-width: 800px;
+  
+}
 `
 
 export const Display = () => {

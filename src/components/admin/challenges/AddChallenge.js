@@ -3,7 +3,6 @@ import Styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -35,8 +34,13 @@ const AddChall = Styled.div`
     flex-direction: column;
     border: 1px solid black;
     padding: 1rem;
-    max-width: 600px;
+    max-width: 400px;
     margin: 1rem auto;
+     @media(min-width: 600px) {
+  
+    max-width: 600px;
+  
+}
 `
 
 export const AddChallenge = (props) => {

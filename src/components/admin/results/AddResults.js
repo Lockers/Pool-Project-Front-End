@@ -26,8 +26,13 @@ const AddResult = Styled.div`
     flex-direction: column;
     border: 1px solid black;
     padding: 1rem;
-    max-width: 600px;
+    max-width: 400px;
     margin: 1rem auto;
+     @media(min-width: 600px) {
+  
+    max-width: 600px;
+  
+}
 `
 
 const Form = Styled.form`
@@ -36,8 +41,13 @@ const Form = Styled.form`
     flex-direction: column;
     border: 1px solid black;
     padding: 1rem;
-    max-width: 600px;
+    max-width: 400px;
     margin: 1rem auto;
+     @media(min-width: 600px) {
+  
+    max-width: 600px;
+  
+}
 `
 
 const useStyles = makeStyles(theme => ({

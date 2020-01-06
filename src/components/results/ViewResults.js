@@ -17,7 +17,7 @@ export const ViewResults = () => {
             {results.data.map((result, index) => {
                 return (
                     <div key={index}>
-                        <Descriptions bordered={true} size='small' layout='vertical' column='xs'>
+                        <Descriptions bordered={true} size='small' layout='vertical' column='sm'>
                             <Descriptions.Item label="Venue">{result.venue}</Descriptions.Item>
                             <Descriptions.Item label="Date"><Moment format="DD/MM/YYYY">{result.date}</Moment></Descriptions.Item>
                             <Descriptions.Item label="Ruleset">{result.ruleset}</Descriptions.Item>

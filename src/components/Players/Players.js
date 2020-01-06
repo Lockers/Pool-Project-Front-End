@@ -9,6 +9,11 @@ const Div = Styled.div`
     flex-direction: column;
     width: 100%;
     margin: 0 auto;
+     @media(min-width: 600px) {
+  
+    max-width: 800px;
+  
+}
 `
 
 export const Players = () => {

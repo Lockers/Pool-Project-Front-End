@@ -20,8 +20,13 @@ const AddDiv = Styled.div`
     flex-direction: column;
     border: 1px solid black;
     padding: 1rem;
-    max-width: 600px;
+    max-width: 400px;
     margin: 1rem auto;
+     @media(min-width: 600px) {
+  
+    max-width: 800px;
+  
+}
 `
 
 export const AddPlayer = () => {

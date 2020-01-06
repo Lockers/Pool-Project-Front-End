@@ -12,9 +12,7 @@ import Styled from 'styled-components';
 import { Loader } from '../../../misc/Loader';
 import Button from '@material-ui/core/Button';
 import { useUpdateRequest } from '../../../helpers/UpdateHelper';
-// import { ViewChallenges } from '../../challenges/ViewChallenges';
-// import { SubmitChallenge } from './SubmitChallenge';
-// import { AdminChallenges } from './AdminChallenge';
+
 
 const EditChall = Styled.div`
     display: flex;
@@ -22,8 +20,13 @@ const EditChall = Styled.div`
     flex-direction: column;
     border: 1px solid black;
     padding: 1rem;
-    max-width: 600px;
+    max-width: 400px;
     margin: 1rem auto;
+     @media(min-width: 600px) {
+  
+    max-width: 800px;
+  
+}
 `
 const Form = Styled.form`
      display: flex;
@@ -31,20 +34,14 @@ const Form = Styled.form`
     flex-direction: column;
     border: 1px solid black;
     padding: 1rem;
-    max-width: 600px;
+    max-width: 400px;
     margin: 1rem auto;
+     @media(min-width: 600px) {
+  
+    max-width: 800px;
+  
+}
 `
-
-const useStyles = makeStyles(theme => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-    },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-    },
-}));
-
 
 export const EditChallenge = (props) => {
 

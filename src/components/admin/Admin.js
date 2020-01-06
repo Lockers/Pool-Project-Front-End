@@ -9,7 +9,7 @@ import { EditChallenge } from './challenges/EditChallenge';
 import { TestArchive } from './players/testArchive';
 import { SubmitChallenge } from './challenges/SubmitChallenge';
 import { AdminChallenges } from './challenges/AdminChallenge';
-import { Route } from 'react-router-dom';
+
 
 export const Admin = () => {
     const players = useGetRequest('players')
@@ -18,10 +18,6 @@ export const Admin = () => {
     if (!players) {
         return <Loader />
     }
-
-    // const handleEditClick = (e) => {
-    //     console.log(e)
-    // }
 
     function handleClick(challenge){
         setChallenge(challenge)

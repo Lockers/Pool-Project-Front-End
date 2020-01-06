@@ -11,9 +11,13 @@ const Div = Styled.div`
   display: flex;
   justify-self: center;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 375px;
   margin-top: 1rem;
   margin-bottom: 1rem;
+
+  @media(min-width: 600px){
+      max-width: 800px;
+  }
 `
 
 const Header = Styled.div`
@@ -23,6 +27,11 @@ const Header = Styled.div`
   max-width: 400px;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  @media(min-width: 600px) {
+  
+    max-width: 800px;
+  
+}
 `
 
 const Img = Styled.img`
@@ -30,6 +39,12 @@ const Img = Styled.img`
     width: 350px;
     margin: 0 auto;
     height: 150px;
+     @media(min-width: 600px) {
+  
+    max-width: 800px;
+    width: 500px
+  
+}
 `
 
 const StyledMenu = withStyles({
