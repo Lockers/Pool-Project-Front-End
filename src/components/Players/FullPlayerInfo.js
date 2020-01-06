@@ -6,13 +6,16 @@ import Button from '@material-ui/core/Button';
 import { Loader } from '../../misc/Loader';
 
 const ResultsDiv = Styled.div`
-margin: 1rem;
-`
+    /* display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 1rem; */
+ `
 const Div = Styled.div`
-    display: flex; 
+    /* display: flex; 
     flex-direction: column;
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 400px; */
 `
 
 export const FullPlayerInfo = (props) => {
@@ -37,14 +40,14 @@ export const FullPlayerInfo = (props) => {
             <h1>Previous results</h1>
             {props.player.results.map((result, index) => {
                 return (
-                    <ResultsDiv key= { index }>
+                    <ResultsDiv key={index}>
                     <Descriptions bordered={true} size='small' layout='vertical' column='xs'>
                         <Descriptions.Item label="Venue">{result.venue}</Descriptions.Item>
                         <Descriptions.Item label="Date"><Moment format="DD/MM/YYYY">{result.date}</Moment></Descriptions.Item>
                         <Descriptions.Item label="Ruleset">{result.ruleset}</Descriptions.Item>
                         <Descriptions.Item label="Pot">£{result.pot}</Descriptions.Item>
                         <Descriptions.Item label="Result">{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged}</Descriptions.Item>
-                        </Descriptions>
+                    </Descriptions>
                     </ResultsDiv>
                     
                 )
