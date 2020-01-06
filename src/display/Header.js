@@ -12,7 +12,10 @@ import Styled from 'styled-components'
 const Container = Styled.div`
     max-width: 800px;
     display: flex;
+    align-content: center;
+    justify-content: center;
     flex-direction: column;
+    margin: 0 auto;
 `
 
 export const Display = () => {
