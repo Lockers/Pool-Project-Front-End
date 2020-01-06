@@ -11,7 +11,7 @@ const Div = Styled.div`
   display: flex;
   justify-self: center;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 450px;
   margin-top: 1rem;
   margin-bottom: 1rem;
 `
