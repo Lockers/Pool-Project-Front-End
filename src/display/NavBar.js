@@ -10,7 +10,10 @@ import Styled from 'styled-components'
 const Div = Styled.div`
   display: flex;
   justify-self: center;
-  margin: 1rem 0rem 1rem 0rem;
+  margin: 0 auto;
+  max-width: 600px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `
 
 const Img = Styled.img`
