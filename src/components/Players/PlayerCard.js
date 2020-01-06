@@ -13,9 +13,9 @@ const Player = Styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 1rem;
-    width: 500px;
+    width: 400px;
     margin: 1rem auto;
 `
 

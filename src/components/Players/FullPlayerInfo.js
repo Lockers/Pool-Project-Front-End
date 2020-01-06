@@ -1,14 +1,20 @@
 import React from 'react';
-import { Spin, Descriptions } from 'antd';
+import { Descriptions } from 'antd';
 import Moment from 'react-moment';
 import Styled from 'styled-components';
 import Button from '@material-ui/core/Button';
+import { Loader } from '../../misc/Loader';
 
 const ResultsDiv = Styled.div`
 margin: 1rem;
 `
 const Div = Styled.div`
+    display: flex; 
+    flex-direction: column;
     border: 1px solid black;
+    margin: 0 auto;
+    max-width: 450px;
+    margin-top: 1rem;
 `
 
 export const FullPlayerInfo = (props) => {
@@ -19,18 +25,17 @@ export const FullPlayerInfo = (props) => {
     
     if (!props.player) {
         return (
-            <Spin />
+            <Loader />
         )
     }
     
     return (
-        <div>
         <Div>
             <p>Name: {props.player.name}</p>
             <p>Played: {props.player.played}</p>
             <p>Won: {props.player.won}</p>
             <p>Total Prize Money Won: £{props.player.totalPrizeMoney}</p>
-            </Div>
+        
             <h1>Previous results</h1>
             {props.player.results.map((result, index) => {
                 return (
@@ -47,6 +52,6 @@ export const FullPlayerInfo = (props) => {
                 )
             })}
             <Button variant="contained" color="primary" onClick={handleClick}>Close</Button>
-        </div>
+        </Div>
     )
 }
