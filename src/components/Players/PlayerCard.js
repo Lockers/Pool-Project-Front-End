@@ -13,27 +13,17 @@ const Player = Styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* border: 1px solid black; */
-    padding: 1rem;
     width: 400px;
-    margin: 1rem auto;
+    margin: 0 auto;
 `
 
 const useStyles = makeStyles({
     card: {
-        maxWidth: 450,
-        margin: '10px 0 10px 0'
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
+        maxWidth: 400,
+        margin: '10px 0 10px 0',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
     },
 });
 

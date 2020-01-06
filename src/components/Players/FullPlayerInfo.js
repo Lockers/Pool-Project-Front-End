@@ -11,10 +11,8 @@ margin: 1rem;
 const Div = Styled.div`
     display: flex; 
     flex-direction: column;
-    border: 1px solid black;
     margin: 0 auto;
-    max-width: 450px;
-    margin-top: 1rem;
+    max-width: 400px;
 `
 
 export const FullPlayerInfo = (props) => {

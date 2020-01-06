@@ -8,8 +8,6 @@ const Div = Styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    justify-content: center;
-    align-content: center;
     margin: 0 auto;
 `
 
@@ -19,9 +17,9 @@ export const Players = () => {
     if (!players) {
         return <Loader />
     }
-    
+
     return (
-        <Div className='PlayerCardContainer'>
+        <Div>
             {players.data.map(card => {
                 return <PlayerCard key={card._id} player={card} />
             })}
