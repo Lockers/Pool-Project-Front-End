@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,6 +8,11 @@ import Moment from 'react-moment';
 import { useGetRequest } from '../../../helpers/GetRequest';
 import { Loader } from '../../../misc/Loader';
 import Styled from 'styled-components';
+import Button from '@material-ui/core/Button';
+import { NavLink } from 'react-router-dom';
+import { SubmitChallenge } from './SubmitChallenge';
+import { EditChallenge } from './EditChallenge';
+
 
 const Challenges = Styled.div`
     display: flex;
@@ -30,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 export const AdminChallenges = (props) => {
     const challenges = useGetRequest('challenges')
     const classes = useStyles();
-
+    
     if (!challenges) {
         return <Loader />
     }
@@ -52,6 +57,8 @@ export const AdminChallenges = (props) => {
                     </List>
                 )
             })}
+            {/* <SubmitChallenge singleChallenge={singleChallenge}/>
+            <EditChallenge singleChallenge={singleChallenge}/> */}
         </Challenges>
     )
 }

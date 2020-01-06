@@ -1,5 +1,5 @@
 import 'date-fns';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -12,8 +12,9 @@ import Styled from 'styled-components';
 import { Loader } from '../../../misc/Loader';
 import Button from '@material-ui/core/Button';
 import { useUpdateRequest } from '../../../helpers/UpdateHelper';
-import { ViewChallenges } from '../../challenges/ViewChallenges';
-import { SubmitChallenge } from './SubmitChallenge';
+// import { ViewChallenges } from '../../challenges/ViewChallenges';
+// import { SubmitChallenge } from './SubmitChallenge';
+// import { AdminChallenges } from './AdminChallenge';
 
 const EditChall = Styled.div`
     display: flex;
@@ -49,7 +50,12 @@ export const EditChallenge = (props) => {
 
     const [fire, setFire] = useState(false)
     const [id, setId] = useState('3')
-    const [newChallenge, setNewChallenge] = useState(props)
+    const challenge = props.challenge
+    const [newChallenge, setNewChallenge] = useState(challenge)
+    
+    useEffect(() => {
+        setNewChallenge(challenge)
+    }, [challenge])
 
     useUpdateRequest(`challenges/${id}`, newChallenge, fire)
     
@@ -79,16 +85,12 @@ export const EditChallenge = (props) => {
         setId(newChallenge._id)
         setFire(true)
     }
-    const handleClick = (e) => {
-        setNewChallenge(e)
-    }
-
-    if (!props) {
+   
+    if (!newChallenge) {
         return <Loader />
     }
     return (
         <div>
-        <ViewChallenges handleClick={handleClick}/>
         <EditChall>
             <h1>Edit Challenge</h1>
                 <Form onSubmit={handleSubmit}>

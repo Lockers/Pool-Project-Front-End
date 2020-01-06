@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Spin, Button } from 'antd';
 import { usePostRequest } from '../../../helpers/PostRequest';
-import { AdminChallenges } from './AdminChallenge';
 
 export const SubmitChallenge = (props) => {
 
@@ -9,16 +8,17 @@ export const SubmitChallenge = (props) => {
     const [fire, setFire] = useState(false)
 
     usePostRequest('results/submit', challenge, fire)
-    if (!props.individualChallenge) {
+
+    if (!props.challenge) {
         return <Spin />
     }
 
-    let submitChallenge = { ...props.individualChallenge }
+    let submitChallenge = { ...props.challenge }
 
     function submitHandler(e) {
         e.preventDefault()
         setChallenge(submitChallenge)
-        setFire(true)
+        // setFire(true)
     }
 
     function challengerFrameHandler(e) {
@@ -32,15 +32,14 @@ export const SubmitChallenge = (props) => {
     }
 
     return (
-        
         <div>
-            
+            <h1>Submit Challenge</h1>
             <form onSubmit={submitHandler}>
                 <input
                     className='textInput'
                     type='text'
                     name='challenger'
-                    value={props.individualChallenge.challenger}
+                    value={props.challenge.challenger}
                 />
                 <input
                     className='numberInput'
@@ -60,7 +59,7 @@ export const SubmitChallenge = (props) => {
                     className='textInput'
                     type='text'
                     name='challenged'
-                    value={props.individualChallenge.challenged}
+                    value={props.challenge.challenged}
                 />
                 <Button htmlType='submit'>Submit</Button>
             </form>
