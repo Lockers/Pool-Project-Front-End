@@ -69,7 +69,7 @@ export function NavBar() {
     return (
         <div>
             <Div>
-                <Img src={require('../components/images/newladderleague.png')} alt='LOL' />
+                <Img src={require('../components/images/Header.png')} alt='LOL' />
             </Div>
             <div>
                 <Button
