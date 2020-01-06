@@ -16,9 +16,18 @@ const Div = Styled.div`
   margin-bottom: 1rem;
 `
 
+const Header = Styled.div`
+  display: flex;
+    flex-direction: column;
+  margin: 0 auto;
+  max-width: 400px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`
+
 const Img = Styled.img`
     display: flex;
-    width: 400px;
+    width: 350px;
     margin: 0 auto;
 `
 
@@ -67,7 +76,7 @@ export function NavBar() {
     };
 
     return (
-        <div>
+        <Header>
             <Div>
                 <Img src={require('../components/images/Header.png')} alt='LOL' />
             </Div>
@@ -105,6 +114,6 @@ export function NavBar() {
                     </StyledMenuItem>
                 </StyledMenu>
             </div>
-        </div>
+        </Header>
     );
 }
