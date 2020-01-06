@@ -10,7 +10,7 @@ import { Admin } from '../components/admin/Admin';
 import Styled from 'styled-components'
 
 const Container = Styled.div`
-    max-width: 800px;
+    max-width: 500px;
     display: flex;
     align-content: center;
     justify-content: center;
