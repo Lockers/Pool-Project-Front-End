@@ -3,6 +3,7 @@ import { PlayerCard } from './PlayerCard';
 import Styled from 'styled-components';
 import { Loader } from '../../misc/Loader';
 import { useGetRequest } from '../../helpers/GetRequest';
+import { FullPlayerInfo } from './FullPlayerInfo';
 
 
 const Div = Styled.div`
@@ -26,7 +27,7 @@ export const Players = (props) => {
     return (
         <Div>
             {players.data.map(card => {
-                return <PlayerCard key={card._id} player={card} />
+                return <FullPlayerInfo key={card._id} player={card} />
             })}
         </Div>
     )
