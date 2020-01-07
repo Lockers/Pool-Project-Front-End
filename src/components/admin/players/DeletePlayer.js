@@ -64,13 +64,15 @@ export const DeletePlayer = (props) => {
 
     const classes = useStyles();
     const [delPlayer, setDeletePlayer] = React.useState('');
+    const [deleteBody, setDeleteBody] = React.useState('')
     const [fire, setFire] = React.useState(false)
 
-    useDeleteRequest(delPlayer, fire)
+    useDeleteRequest(deleteBody, fire)
 
     const handleChange = event => {
         event.preventDefault()
-        setDeletePlayer(event.target.value);
+        setDeletePlayer(event.target.value.name);
+        setDeleteBody(event.target.value)
     };
 
     const deletePlayer = e => {
@@ -91,10 +93,10 @@ export const DeletePlayer = (props) => {
                     onChange={handleChange}
                     input={<BootstrapInput />}
                 >
-                    <MenuItem value="">
+                    <MenuItem value=''>
                         <em>None</em>
                     </MenuItem>
-                    {props.players.data.map(player => <MenuItem key={player._id} value={player.name}>{player.name}</MenuItem>)}
+                        {props.players.data.map(player => <MenuItem key={player._id} value={ player }>{player.name}</MenuItem>)}
                 </Select>
                 <Button variant="contained" color="primary" type='submit' className='test'>
                     Delete Player

@@ -4,6 +4,7 @@ import Styled from 'styled-components';
 import { Loader } from '../../misc/Loader';
 import { useGetRequest } from '../../helpers/GetRequest';
 
+
 const Div = Styled.div`
     display: flex;
     flex-direction: column;
@@ -15,8 +16,7 @@ const Div = Styled.div`
   
 }
 `
-
-export const Players = () => {
+export const Players = (props) => {
     const players = useGetRequest('players')
 
     if (!players) {

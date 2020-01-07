@@ -19,12 +19,12 @@ const columns = [
     { id: 'played', label: 'P', minWidth: 50 },
     { id: 'won', label: 'W', minWidth: 50, align: 'right'},
     { id: 'lost', label: 'L', minWidth: 50, align: 'right'},
-    { id: 'totalPrizeMoney', label: 'Total Prize Money £', minWidth: 100, align: 'right' },
+    // { id: 'totalPrizeMoney', label: 'Total Prize Money £', minWidth: 100, align: 'right' },
     { id: 'daysLeft', label: 'Days Left', minWidth: 50, align: 'right' },
 ];
 
-function createData(leaguePosition, name, played, won, lost, totalPrizeMoney, challengable, daysLeft) {
-    return { leaguePosition, name, played, won, lost, totalPrizeMoney, challengable, daysLeft };
+function createData(leaguePosition, name, played, won, lost, challengable, daysLeft) {
+    return { leaguePosition, name, played, won, lost, challengable, daysLeft };
 }
 
 
@@ -62,7 +62,7 @@ export const LeagueTable = () => {
             const daysLeft = newDate - lol
             const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
             const days = Math.round(sum)
-            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.totalPrizeMoney, player.challengable, days))
+            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
           
         }
         const hi = new Date(Date.parse(player.createdAt.slice(-1)[0].date)).toString();

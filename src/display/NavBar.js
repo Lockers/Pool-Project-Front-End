@@ -112,20 +112,21 @@ export function NavBar() {
                     keepMounted
                     open={Boolean(anchorEl)}
                     onClick={handleClose}
+                    style={{textAlign: 'center'}}
                 >
-                    <StyledMenuItem>
+                    <StyledMenuItem style={{ textAlign: 'center' }}>
                         <ListItemText primary={<NavLink to="/">League Table</NavLink>} />
                     </StyledMenuItem>
-                    <StyledMenuItem>
+                    <StyledMenuItem style={{ textAlign: 'center' }}>
                         <ListItemText primary={<NavLink to="/viewresults">Results</NavLink>} />
                     </StyledMenuItem>
-                    <StyledMenuItem>
+                    <StyledMenuItem style={{ textAlign: 'center' }}>
                         <ListItemText primary={<NavLink to="/players">Players</NavLink>} />
                     </StyledMenuItem>
-                    <StyledMenuItem>
+                    <StyledMenuItem style={{ textAlign: 'center' }}>
                         <ListItemText primary={<NavLink to="/viewchallenges">Upcoming Challenges</NavLink>} />
                     </StyledMenuItem>
-                    <StyledMenuItem>
+                    <StyledMenuItem style={{ textAlign: 'center', fontWeight: 'boldest'}}>
                         <ListItemText primary={<NavLink to="/admin">Admin</NavLink>} />
                     </StyledMenuItem>
                 </StyledMenu>

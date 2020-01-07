@@ -9,6 +9,7 @@ import PrivateRoute from '../components/auth/PrivateRoute';
 import { Admin } from '../components/admin/Admin';
 import Styled from 'styled-components'
 
+
 const Container = Styled.div`
     max-width: 400px;
     display: flex;
@@ -22,18 +23,17 @@ const Container = Styled.div`
   
 }
 `
-
 export const Display = () => {
 
     return (
         <Container>
             <NavBar />
             <Route exact path="/" component={LeagueTable} />
-            <Route exact path="/players" component={Players} />
+            <Route exact path="/players" render={(props) => <Players {...props} />} />
             <Route exact path="/viewresults" component={ViewResults} />
             <Route exact path="/viewchallenges" component={ViewChallenges} />
-            <PrivateRoute path='/admin' component={Admin} /> 
-        </Container> 
+            <PrivateRoute path='/admin' component={Admin} />
+        </Container>
 
     )
 }
