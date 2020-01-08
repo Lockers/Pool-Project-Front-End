@@ -18,8 +18,7 @@ export const SubmitChallenge = (props) => {
     function submitHandler(e) {
         e.preventDefault()
         setChallenge(submitChallenge)
-        console.log(submitChallenge)
-        // setFire(true)
+        setFire(true)
     }
 
     function challengerFrameHandler(e) {
