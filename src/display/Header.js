@@ -7,7 +7,9 @@ import { ViewResults } from '../components/results/ViewResults';
 import { ViewChallenges } from '../components/challenges/ViewChallenges';
 import PrivateRoute from '../components/auth/PrivateRoute';
 import { Admin } from '../components/admin/Admin';
-import Styled from 'styled-components'
+import { Login } from '../components/auth/Login';
+import { Register } from '../components/auth/Register';
+import Styled from 'styled-components';
 
 
 const Container = Styled.div`
@@ -24,11 +26,13 @@ const Container = Styled.div`
 }
 `
 export const Display = () => {
-
+    
     return (
         <Container>
             <NavBar />
             <Route exact path="/" component={LeagueTable} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/players" render={(props) => <Players {...props} />} />
             <Route exact path="/viewresults" component={ViewResults} />
             <Route exact path="/viewchallenges" component={ViewChallenges} />

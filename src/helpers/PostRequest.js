@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import Axios from 'axios';
 
-// const url = 'http://localhost:5000/';
-const url = 'https://telford-pool-back-end.herokuapp.com/';
+const url = 'http://localhost:5000/';
+// const url = 'https://telford-pool-back-end.herokuapp.com/';
 
 export const usePostRequest = (endpoint, data, fire) => {
     useEffect(() => {
@@ -10,13 +10,18 @@ export const usePostRequest = (endpoint, data, fire) => {
             Axios
                 .post(`${url}${endpoint}`, data)
                 .then(response => {
-                    console.log('happy Path');
+                    if (response.data.token) {
+                        window.localStorage.setItem('token', response.data.token)
+                        alert('logged in')
+                        <Redirect to='/admin'/>
+                    }
+                    console.log('happy Path', response);
                     alert('Added')
                     window.location.reload()
                     
                 })
                 .catch(error => {
-                    console.log('sad Path');
+                    console.log('sad Path', error);
                     alert('Not added you mong')
                     window.location.reload()
                 })
