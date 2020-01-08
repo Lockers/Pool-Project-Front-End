@@ -1,5 +1,4 @@
 import React  from 'react';
-import { PlayerCard } from './PlayerCard';
 import Styled from 'styled-components';
 import { Loader } from '../../misc/Loader';
 import { useGetRequest } from '../../helpers/GetRequest';

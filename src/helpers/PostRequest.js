@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import Axios from 'axios';
 
-const url = 'http://localhost:5000/';
-// const url = 'https://telford-pool-back-end.herokuapp.com/';
+// const url = 'http://localhost:5000/';
+const url = 'https://telford-pool-back-end.herokuapp.com/';
 
 export const usePostRequest = (endpoint, data, fire) => {
     useEffect(() => {
@@ -13,7 +13,6 @@ export const usePostRequest = (endpoint, data, fire) => {
                     if (response.data.token) {
                         window.localStorage.setItem('token', response.data.token)
                         alert('logged in')
-                        <Redirect to='/admin'/>
                     }
                     console.log('happy Path', response);
                     alert('Added')
