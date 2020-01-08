@@ -56,8 +56,8 @@ export const FullPlayerInfo = (props) => {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-          </Avatar>
+                        
+                    </Avatar>
                 }
                 action={
                     <IconButton aria-label="settings">
@@ -65,7 +65,6 @@ export const FullPlayerInfo = (props) => {
                     </IconButton>
                 }
                 title={props.player.name}
-                subheader="Nearly as good as Matt Locklin"
             />
             <CardMedia
                 // className={classes.media}
@@ -77,16 +76,15 @@ export const FullPlayerInfo = (props) => {
                         <p>League Position: {props.player.leaguePosition}</p>
                         <p>Played: {props.player.played}</p>
                         <p>Won :{props.player.won}</p>
-                        Babies Killed: 3
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+                {/* <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
+                </IconButton> */}
+                {/* <IconButton aria-label="share">
                     <ShareIcon />
-                </IconButton>
+                </IconButton> */}
                 <IconButton
                     className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,
