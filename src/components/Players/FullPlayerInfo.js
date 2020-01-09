@@ -45,7 +45,7 @@ export const FullPlayerInfo = (props) => {
     console.log(props)
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-
+    const winPercentage = Math.round(props.player.won / props.player.played * 100);
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -75,7 +75,9 @@ export const FullPlayerInfo = (props) => {
                 <Typography variant="body2" color="textSecondary" component="p">
                         <p>League Position: {props.player.leaguePosition}</p>
                         <p>Played: {props.player.played}</p>
-                        <p>Won :{props.player.won}</p>
+                        <p>Won: {props.player.won}</p>
+                        <p>Win: Percentage {winPercentage}%</p>
+                       
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
@@ -99,7 +101,12 @@ export const FullPlayerInfo = (props) => {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography paragraph>Previous Results</Typography>
-                        {props.player.results.map(result => <Typography paragraph>{result.challenger} {result.challengerScore}-{result.challengedScore} {result.challenged} </Typography>)}
+                        {props.player.results.map(result => <Typography paragraph>
+                            {result.challenger}
+                            {result.challengerScore}-
+                            {result.challengedScore}
+                            {result.challenged}
+                        </Typography>)}
                 </CardContent>
             </Collapse>
             </Card>
