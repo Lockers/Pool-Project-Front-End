@@ -14,13 +14,13 @@ import { Loader } from '../../misc/Loader';
 //Import Column Data to set up table
 
 const columns = [
-    { id: 'leaguePosition', label: 'League Position', minWidth: 100 },
+    { id: 'leaguePosition', label: 'Pos', maxWidth: 50 },
     { id: 'name', label: 'Name', minWidth: 100 },
     { id: 'played', label: 'P', minWidth: 50 },
     { id: 'won', label: 'W', minWidth: 50, align: 'right'},
     { id: 'lost', label: 'L', minWidth: 50, align: 'right'},
     // { id: 'totalPrizeMoney', label: 'Total Prize Money £', minWidth: 100, align: 'right' },
-    { id: 'daysLeft', label: 'Days Left', minWidth: 50, align: 'right' },
+    { id: 'daysLeft', label: 'Days Left', maxWidth: 50, align: 'right' },
 ];
 
 function createData(leaguePosition, name, played, won, lost, challengable, daysLeft) {
@@ -76,18 +76,8 @@ export const LeagueTable = () => {
         
     })
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = event => {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
-    };
 
     return (
-        // <Paper className={classes.root}>
-            // <TableContainer className={classes.container}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
@@ -95,7 +85,7 @@ export const LeagueTable = () => {
                                 <TableCell
                                     key={column.id}
                                     align={column.align}
-                                    style={{ minWidth: column.minWidth }}
+                                    style={{ minWidth: column.minWidth, maxWidth: column.maxWidth }}
                                 >
                                     {column.label}
                                 </TableCell>
@@ -119,16 +109,6 @@ export const LeagueTable = () => {
                         })}
                     </TableBody>
                 </Table>
-            // </TableContainer>
-            // <TablePagination
-            //     rowsPerPageOptions={[10, 25, 50, 100]}
-            //     component="div"
-            //     count={rows.length}
-            //     rowsPerPage={rowsPerPage}
-            //     page={page}
-            //     onChangePage={handleChangePage}
-            //     onChangeRowsPerPage={handleChangeRowsPerPage}
-            // />
-        // </Paper>
+        
     );
 }
