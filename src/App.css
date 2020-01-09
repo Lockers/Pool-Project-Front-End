@@ -5,10 +5,11 @@ body {
   margin: 0 auto;
   text-align: center;
   background-color: pink;
+  background-image: url('./components/images/Lewis.png');
 }
 
 @media(min-width: 600px) {
-  body{
+  body {
     max-width: 800px;
   }
 }
