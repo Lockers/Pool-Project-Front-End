@@ -4,7 +4,7 @@ body {
   max-width: 375px;
   margin: 0 auto;
   text-align: center;
-
+  background-color: pink;
 }
 
 @media(min-width: 600px) {

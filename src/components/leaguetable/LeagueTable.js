@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 
 
 export const LeagueTable = () => {
-    const classes = useStyles();
+    // const classes = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(50);
 
@@ -77,7 +77,7 @@ export const LeagueTable = () => {
         
     })
 
-
+    console.log(players)
     return (
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>

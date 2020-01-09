@@ -66,7 +66,8 @@ export const FullPlayerInfo = (props) => {
                 newArray.push('L')
         }
     })
-    console.log(newArray)
+    const meh = newArray.slice(0, 6)
+    const form = meh.reverse()
     
     return (
         <div>
@@ -95,7 +96,7 @@ export const FullPlayerInfo = (props) => {
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
                         <p>Win Percentage: {winPercentage}%</p>
-                        <p>Form {newArray.slice(0, 6)} </p>
+                        <p>Form {form} </p>
                        
                 </Typography>
             </CardContent>
