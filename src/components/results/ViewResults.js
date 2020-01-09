@@ -1,14 +1,15 @@
 import React from 'react';
 import { useGetRequest } from '../../helpers/GetRequest';
-import { Descriptions, Spin } from 'antd';
+import { Descriptions } from 'antd';
 import Moment from 'react-moment';
+import { Loader } from '../../misc/Loader';
 
 
 export const ViewResults = () => {
     const results = useGetRequest('results')
 
     if (!results) {
-        return <Spin />
+        return <Loader />
     }
 
     return (
