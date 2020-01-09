@@ -14,35 +14,21 @@ import { Loader } from '../../misc/Loader';
 //Import Column Data to set up table
 
 const columns = [
-    { id: 'leaguePosition', label: 'Pos', maxWidth: 50 },
+    { id: 'leaguePosition', label: 'League Position', minWidth: 100 },
     { id: 'name', label: 'Name', minWidth: 100 },
     { id: 'played', label: 'P', minWidth: 50 },
     { id: 'won', label: 'W', minWidth: 50, align: 'right'},
     { id: 'lost', label: 'L', minWidth: 50, align: 'right'},
     // { id: 'totalPrizeMoney', label: 'Total Prize Money £', minWidth: 100, align: 'right' },
-    { id: 'daysLeft', label: 'Days Left', maxWidth: 50, align: 'right' },
+    { id: 'daysLeft', label: 'Days Left', minWidth: 50, align: 'right' },
 ];
 
 function createData(leaguePosition, name, played, won, lost, challengable, daysLeft) {
     return { leaguePosition, name, played, won, lost, challengable, daysLeft };
 }
 
-
-const useStyles = makeStyles({
-    root: {
-        width: '100%',
-        marginTop: '1rem',
-        margin: '1rem'
-    },
-    container: {
-        maxHeight: 440,
-    },
-    
-});
-
-
 export const LeagueTable = () => {
-    // const classes = useStyles();
+    
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(50);
 
@@ -63,7 +49,7 @@ export const LeagueTable = () => {
             const daysLeft = newDate - lol
             const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
             const days = Math.round(sum)
-            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
+            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost,  player.challengable, days))
           
         }
         const hi = new Date(Date.parse(player.createdAt.slice(-1)[0].date)).toString();
@@ -77,7 +63,6 @@ export const LeagueTable = () => {
         
     })
 
-    console.log(players)
     return (
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
@@ -86,7 +71,7 @@ export const LeagueTable = () => {
                                 <TableCell
                                     key={column.id}
                                     align={column.align}
-                                    style={{ minWidth: column.minWidth, maxWidth: column.maxWidth }}
+                                    style={{ minWidth: column.minWidth }}
                                 >
                                     {column.label}
                                 </TableCell>

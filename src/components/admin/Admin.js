@@ -6,7 +6,7 @@ import { AddResults } from './results/AddResults';
 import { Loader } from '../../misc/Loader';
 import { AddChallenge } from './challenges/AddChallenge';
 import { EditChallenge } from './challenges/EditChallenge';
-// import { TestArchive } from './players/testArchive';
+import { TestArchive } from './players/testArchive';
 import { SubmitChallenge } from './challenges/SubmitChallenge';
 import { AdminChallenges } from './challenges/AdminChallenge';
 
@@ -33,7 +33,7 @@ export const Admin = () => {
             <AdminChallenges handleClick={handleClick} />
             <EditChallenge challenge={challenge} />
             <SubmitChallenge challenge={challenge} />
-            {/* <TestArchive players={players} /> */}
+            <TestArchive players={players} />
         </div>
     )
 }
