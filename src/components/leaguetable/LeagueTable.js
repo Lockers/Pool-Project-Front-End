@@ -86,8 +86,8 @@ export const LeagueTable = () => {
     };
 
     return (
-        <Paper className={classes.root}>
-            <TableContainer className={classes.container}>
+        // <Paper className={classes.root}>
+            // <TableContainer className={classes.container}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
@@ -119,16 +119,16 @@ export const LeagueTable = () => {
                         })}
                     </TableBody>
                 </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 50, 100]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
-        </Paper>
+            // </TableContainer>
+            // <TablePagination
+            //     rowsPerPageOptions={[10, 25, 50, 100]}
+            //     component="div"
+            //     count={rows.length}
+            //     rowsPerPage={rowsPerPage}
+            //     page={page}
+            //     onChangePage={handleChangePage}
+            //     onChangeRowsPerPage={handleChangeRowsPerPage}
+            // />
+        // </Paper>
     );
 }
