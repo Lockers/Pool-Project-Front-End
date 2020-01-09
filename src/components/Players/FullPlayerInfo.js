@@ -66,8 +66,8 @@ export const FullPlayerInfo = (props) => {
                 newArray.push('L')
         }
     })
-    const meh = newArray.slice(0, 6)
-    const form = meh.reverse()
+    newArray.slice(0, 6).reverse()
+    
     
     return (
         <div>
@@ -96,7 +96,7 @@ export const FullPlayerInfo = (props) => {
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
                         <p>Win Percentage: {winPercentage}%</p>
-                        <p>Form {form} </p>
+                        <p>Form {newArray.slice(0, 6).reverse()} </p>
                        
                 </Typography>
             </CardContent>
@@ -121,7 +121,7 @@ export const FullPlayerInfo = (props) => {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography paragraph>Previous Results</Typography>
-                        {props.player.results.map(result => <Typography paragraph>
+                        {props.player.results.reverse().map(result => <Typography paragraph>
                             {result.challenger}
                             {result.challengerScore}-
                             {result.challengedScore}

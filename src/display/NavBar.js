@@ -7,19 +7,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Styled from 'styled-components'
 
-const Div = Styled.div`
-  display: flex;
-  justify-self: center;
-  margin: 0 auto;
-  max-width: 375px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-  @media(min-width: 600px){
-      max-width: 800px;
-  }
-`
-
 const Header = Styled.div`
   display: flex;
     flex-direction: column;
@@ -30,19 +17,6 @@ const Header = Styled.div`
   @media(min-width: 600px) {
   
     max-width: 800px;
-  
-}
-`
-
-const Img = Styled.img`
-    display: flex;
-    width: 350px;
-    margin: 0 auto;
-    height: 150px;
-     @media(min-width: 600px) {
-  
-    max-width: 800px;
-    width: 500px
   
 }
 `
@@ -93,9 +67,6 @@ export function NavBar() {
 
     return (
         <Header>
-            {/* <Div>
-                <Img src={require('../components/images/Header.png')} alt='LOL' />
-            </Div> */}
             <div>
                 <Button
                     aria-controls="customized-menu"
