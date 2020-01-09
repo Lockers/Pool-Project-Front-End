@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const url = 'http://localhost:5000/';
-// const url = 'https://telford-pool-back-end.herokuapp.com/';
+// const url = 'http://localhost:5000/';
+const url = 'https://telford-pool-back-end.herokuapp.com/';
 
 export function useGetRequest(endpoint) {
     const [data, setData] = useState()
