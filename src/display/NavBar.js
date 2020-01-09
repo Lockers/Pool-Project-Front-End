@@ -93,9 +93,9 @@ export function NavBar() {
 
     return (
         <Header>
-            <Div>
+            {/* <Div>
                 <Img src={require('../components/images/Header.png')} alt='LOL' />
-            </Div>
+            </Div> */}
             <div>
                 <Button
                     aria-controls="customized-menu"
