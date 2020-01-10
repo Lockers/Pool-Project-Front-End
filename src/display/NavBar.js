@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Styled from 'styled-components'
 
+const auth = true
 const Header = Styled.div`
   display: flex;
     flex-direction: column;
@@ -98,7 +99,7 @@ export function NavBar() {
                         <ListItemText primary={<NavLink to="/viewchallenges">Upcoming Challenges</NavLink>} />
                     </StyledMenuItem>
                     <StyledMenuItem style={{ textAlign: 'center', fontWeight: 'boldest'}}>
-                        <ListItemText primary={<NavLink to="/admin">Admin</NavLink>} />
+                        {auth ? <ListItemText primary={<NavLink to="/admin">Admin</NavLink>} /> : null}
                     </StyledMenuItem>
                 </StyledMenu>
             </div>
