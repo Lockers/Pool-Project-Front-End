@@ -68,7 +68,7 @@ export const FullPlayerInfo = (props) => {
     })
     newArray.slice(0, 6).reverse()
     
-    
+    console.log(lol.reverse())
     return (
         <div>
         <Card className={classes.card}>
@@ -121,7 +121,7 @@ export const FullPlayerInfo = (props) => {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography paragraph>Previous Results</Typography>
-                        {props.player.results.reverse().map(result => <Typography paragraph>
+                        {props.player.results.map(result => <Typography paragraph>
                             {result.challenger}
                             {result.challengerScore}-
                             {result.challengedScore}

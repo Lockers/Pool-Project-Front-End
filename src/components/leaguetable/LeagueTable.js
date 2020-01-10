@@ -14,7 +14,7 @@ import { Loader } from '../../misc/Loader';
 //Import Column Data to set up table
 
 const columns = [
-    { id: 'leaguePosition', label: 'League Position', minWidth: 100 },
+    { id: 'leaguePosition', label: 'Pos', minWidth: 50 },
     { id: 'name', label: 'Name', minWidth: 100 },
     { id: 'played', label: 'P', minWidth: 50 },
     { id: 'won', label: 'W', minWidth: 50, align: 'right'},
@@ -28,9 +28,6 @@ function createData(leaguePosition, name, played, won, lost, challengable, daysL
 }
 
 export const LeagueTable = () => {
-    
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(50);
 
     const players = useGetRequest('players')
 
@@ -49,7 +46,7 @@ export const LeagueTable = () => {
             const daysLeft = newDate - lol
             const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
             const days = Math.round(sum)
-            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost,  player.challengable, days))
+            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
           
         }
         const hi = new Date(Date.parse(player.createdAt.slice(-1)[0].date)).toString();
@@ -59,7 +56,7 @@ export const LeagueTable = () => {
         const daysLeft = newDate - lol
         const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
         const days = Math.round(sum)
-        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.totalPrizeMoney, player.challengable, days))
+        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
         
     })
 
@@ -79,7 +76,7 @@ export const LeagueTable = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+                        {rows.map(row => {
                             return (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={row.leaguePosition} style={row.challengable ? { backgroundColor: 'lightgreen' } : { backgroundColor: 'orange' }}>
                                     {columns.map(column => {
@@ -95,6 +92,5 @@ export const LeagueTable = () => {
                         })}
                     </TableBody>
                 </Table>
-        
     );
 }
