@@ -120,12 +120,11 @@ export const FullPlayerInfo = (props) => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>Previous Results</Typography>
-                        {props.player.results.map(result => <Typography paragraph>
-                            {result.challenger}
-                            {result.challengerScore}-
-                            {result.challengedScore}
-                            {result.challenged}
+                        <Typography paragraph>Previous Results</Typography>
+                        {props.player.results.map(result => <Typography style={{ fontSize: '14px'}} paragraph>
+                            <div>
+                                <span>{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged} </span>
+                            </div>
                         </Typography>)}
                 </CardContent>
             </Collapse>
