@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
@@ -23,10 +22,6 @@ const useStyles = makeStyles(theme => ({
         marginTop: '3rem',
         backgroundColor: 'lightgrey'
     },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
     expand: {
         transform: 'rotate(0deg)',
         marginLeft: 'auto',
@@ -45,15 +40,19 @@ const useStyles = makeStyles(theme => ({
 export const FullPlayerInfo = (props) => {
     
     const classes = useStyles();
+    const [resultArray, setResultArray] = useState([...props.player.results ].reverse())
     const [expanded, setExpanded] = React.useState(false);
+
     const winPercentage = Math.round(props.player.won / props.player.played * 100);
+
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
-    const lol = props.player.results.reverse()
+    // const lol = props.player.results.reverse()
     const newArray = []
-    lol.forEach(lel => {
+
+    resultArray.forEach(lel => {
         if (lel.challenger === props.player.name) {
             if (lel.challengerScore > lel.challengedScore)
                 newArray.push('W')
@@ -67,7 +66,6 @@ export const FullPlayerInfo = (props) => {
                 newArray.push('L')
         }
     })
-    newArray.slice(0, 6).reverse()
     
     return (
         <div>
@@ -85,18 +83,13 @@ export const FullPlayerInfo = (props) => {
                 }
                 title={props.player.name}
             />
-            <CardMedia
-                // className={classes.media}
-                // image="/static/images/cards/paella.jpg"
-                // title="Paella dish"
-            />
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" color="textSecondary" component="div">
                         <p>League Position: {props.player.leaguePosition}</p>
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
                         <p>Win Percentage: {winPercentage}%</p>
-                        <p>Form {newArray.slice(0, 6).reverse()} </p>
+                        <p>Form {newArray.slice(0, 6)} </p>
                        
                 </Typography>
             </CardContent>
@@ -120,11 +113,9 @@ export const FullPlayerInfo = (props) => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                        <Typography paragraph>Previous Results</Typography>
-                        {props.player.results.map(result => <Typography style={{ fontSize: '14px'}} paragraph>
-                            <div>
-                                <span>{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged} </span>
-                            </div>
+                        <Typography>Previous Results</Typography>
+                        {resultArray.map((result, index) => <Typography key={index} style={{ fontSize: '14px'}}>
+                            <span> {result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged} </span>
                         </Typography>)}
                 </CardContent>
             </Collapse>
