@@ -9,7 +9,7 @@ export const Register = () => {
         username: '',
         email: '',
         password: '',
-        role: 'admin'
+        role: 'player'
     })
 
     const [fire, setFire] = useState(false)

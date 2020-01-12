@@ -1,12 +1,8 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useGetRequest } from '../../helpers/GetRequest';
 import { Loader } from '../../misc/Loader';
@@ -19,7 +15,6 @@ const columns = [
     { id: 'played', label: 'P', minWidth: 50 },
     { id: 'won', label: 'W', minWidth: 50, align: 'right'},
     { id: 'lost', label: 'L', minWidth: 50, align: 'right'},
-    // { id: 'totalPrizeMoney', label: 'Total Prize Money £', minWidth: 100, align: 'right' },
     { id: 'daysLeft', label: 'Days Left', minWidth: 50, align: 'right' },
 ];
 

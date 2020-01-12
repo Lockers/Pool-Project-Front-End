@@ -10,6 +10,7 @@ const Div = Styled.div`
     flex-direction: column;
     width: 100%;
     margin: 0 auto;
+    color: grey;
     background-color: 'yellow';
      @media(min-width: 600px) {
   

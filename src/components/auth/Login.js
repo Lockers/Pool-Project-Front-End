@@ -16,12 +16,10 @@ export const Login = () => {
 
     function handleChange(e) {
         setLoginForm({ ...loginForm, [e.target.name]: e.target.value })
-        console.log(loginForm)
     }
     function submitHandler(e) {
         e.preventDefault()
-        setFire(true)
-        console.log(loginForm)
+        setFire(true) 
     }
 
     return (

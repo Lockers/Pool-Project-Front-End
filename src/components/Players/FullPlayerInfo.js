@@ -11,8 +11,8 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
+// import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 345,
         margin: '0 auto',
         marginTop: '3rem',
+        backgroundColor: 'lightgrey'
     },
     media: {
         height: 0,
@@ -68,7 +69,6 @@ export const FullPlayerInfo = (props) => {
     })
     newArray.slice(0, 6).reverse()
     
-    console.log(lol.reverse())
     return (
         <div>
         <Card className={classes.card}>
