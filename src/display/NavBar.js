@@ -87,6 +87,9 @@ export function NavBar() {
                     style={{textAlign: 'center'}}
                 >
                     <StyledMenuItem style={{ textAlign: 'center' }}>
+                        <ListItemText primary={<NavLink to="/dashboard">DashBoard</NavLink>} />
+                    </StyledMenuItem>
+                    <StyledMenuItem style={{ textAlign: 'center' }}>
                         <ListItemText primary={<NavLink to="/">League Table</NavLink>} />
                     </StyledMenuItem>
                     <StyledMenuItem style={{ textAlign: 'center' }}>

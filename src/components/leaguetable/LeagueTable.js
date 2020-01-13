@@ -50,7 +50,12 @@ export const LeagueTable = () => {
 
         const daysLeft = newDate - lol
         const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
-        const days = Math.round(sum)
+        let days = Math.round(sum)
+        if (isNaN(days)) {
+            days = 0;
+        }
+        console.log(days)
+
         return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
         
     })

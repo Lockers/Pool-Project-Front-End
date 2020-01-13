@@ -11,6 +11,7 @@ import { Login } from '../components/auth/Login';
 import { Register } from '../components/auth/Register';
 import Styled from 'styled-components';
 import { Rules } from '../components/Rules';
+import { DashBoard } from '../components/dashboard/DashBoard';
  
 
 const Container = Styled.div`
@@ -32,6 +33,7 @@ export const Display = () => {
         <Container>
             <NavBar />
             <Route exact path="/" component={LeagueTable} />
+            <Route exact path="/dashboard" component={DashBoard} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/players" render={(props) => <Players {...props} />} />
