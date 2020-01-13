@@ -49,7 +49,6 @@ export const FullPlayerInfo = (props) => {
         setExpanded(!expanded);
     };
 
-    // const lol = props.player.results.reverse()
     const newArray = []
 
     resultArray.forEach(lel => {
@@ -89,7 +88,7 @@ export const FullPlayerInfo = (props) => {
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
                         <p>Win Percentage: {winPercentage}%</p>
-                        <p>Form {newArray.slice(0, 6)} </p>
+                        <p>Form {newArray.slice(0, 6).reverse()} </p>
                        
                 </Typography>
             </CardContent>

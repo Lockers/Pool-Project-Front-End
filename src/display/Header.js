@@ -10,7 +10,8 @@ import { Admin } from '../components/admin/Admin';
 import { Login } from '../components/auth/Login';
 import { Register } from '../components/auth/Register';
 import Styled from 'styled-components';
-
+import { Rules } from '../components/Rules';
+ 
 
 const Container = Styled.div`
     max-width: 400px;
@@ -36,6 +37,7 @@ export const Display = () => {
             <Route exact path="/players" render={(props) => <Players {...props} />} />
             <Route exact path="/viewresults" component={ViewResults} />
             <Route exact path="/viewchallenges" component={ViewChallenges} />
+            <Route exact path="/rules" component={Rules} />
             <PrivateRoute path='/admin' component={Admin} />
         </Container>
 
