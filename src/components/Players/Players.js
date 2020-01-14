@@ -18,7 +18,7 @@ const Div = Styled.div`
   
 }
 `
-export const Players = (props) => {
+export const Players = () => {
     const players = useGetRequest('players')
 
     if (!players) {
