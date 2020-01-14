@@ -47,7 +47,7 @@ export const ViewChallenges = (props) => {
             {challenges.data.map(challenge => {
                 return (
                     <List component="nav" className={classes.root} aria-label="mailbox folders" key={challenge._id}>
-                        <ListItem button onClick={e => props.handleClick(challenge)}>
+                        <ListItem button >
                             <ListItemText style={{ textAlign: 'center' , lineHeight: '3'}}>
                                 {challenge.challenger} v {challenge.challenged} <br />
                                 Venue: {challenge.venue} <br />

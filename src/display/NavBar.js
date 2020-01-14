@@ -87,9 +87,6 @@ export function NavBar() {
                     style={{textAlign: 'center'}}
                 >
                     <StyledMenuItem style={{ textAlign: 'center' }}>
-                        <ListItemText primary={<NavLink to="/dashboard">DashBoard</NavLink>} />
-                    </StyledMenuItem>
-                    <StyledMenuItem style={{ textAlign: 'center' }}>
                         <ListItemText primary={<NavLink to="/">League Table</NavLink>} />
                     </StyledMenuItem>
                     <StyledMenuItem style={{ textAlign: 'center' }}>
@@ -103,6 +100,9 @@ export function NavBar() {
                     </StyledMenuItem>
                     <StyledMenuItem style={{ textAlign: 'center' }}>
                         <ListItemText primary={<NavLink to="/rules">Rules</NavLink>} />
+                    </StyledMenuItem>
+                    <StyledMenuItem style={{ textAlign: 'center' }}>
+                        <ListItemText primary={<NavLink to="/dashboard">DashBoard</NavLink>} />
                     </StyledMenuItem>
                     <StyledMenuItem style={{ textAlign: 'center', fontWeight: 'boldest'}}>
                         {auth ? <ListItemText primary={<NavLink to="/admin">Admin</NavLink>} /> : null}
