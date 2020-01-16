@@ -41,7 +41,7 @@ export const FullPlayerInfo = (props) => {
     
     const classes = useStyles();
     const [resultArray, setResultArray] = useState([...props.player.results ].reverse())
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     const winPercentage = Math.round(props.player.won / props.player.played * 100);
 

@@ -19,6 +19,7 @@ export const DashBoard = () => {
         <div>
             <p>Total Pot Played for = £{totalPot}</p>
             <p>Average Pot = £{Math.round(totalPot / results.data.length)}</p>
+            <p>Times Lewis Turner Has quit pool: 124</p>
         </div>
     )
 }
